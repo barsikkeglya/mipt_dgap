@@ -1,0 +1,70 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+%tikz (draw)
+
+\usepackage{tikz}
+
+%tikz libraries
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+
+\usepackage{float}
+
+\parindent=0ex
+
+\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+\DeclareMathOperator{\sgn}{sgn}
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+
+\begin{document}
+	\input{titlepage.tex}
+	\newpage
+	\pagenumbering{arabic}
+    
+    \begin{problem}[Т14]
+        Найдите вторые частные производные функции в данной точке
+        \begin{equation*}
+            f(x,y,z)=(1+x)^{\alpha}(1+y)^{\beta}(1+z)^{\gamma}
+        \end{equation*}
+    \end{problem}
+	
+    \begin{problem}[Т16]
+        Найдите частные производные всех порядков функции $f(x,y,z)=\ln{(x+y+z)}$
+    \end{problem}
+    \begin{sol}
+        Положим $t=x+y+z$, тогда $f(t)=\ln(t)$
+        \begin{equation}
+            d^nf=\frac{(-1)^{n-1}(n-1)!}{t^n}dt^n
+        \end{equation}
+        В свою очередь 
+        \begin{equation}
+            dt^n=(dx+dy+dz)^n=\displaystyle\sum_{k_1,k_2,k_3}^{}{n\choose k_1,k_2,k_3}dx^{k_1}dy^{k_2}dz^{k_3}
+        \end{equation}
+        Чтобы найти некоторую частную производную необходимо выбрать $k_1,k_2,k_3$, такие что $k_1+k_2+k_3=n$, и она будет равна
+        \begin{equation}
+            \frac{\partial^n f}{\partial x^{k_1}\partial y^{k_2}\partial z^{k_3}}=\frac{(-1)^{n-1}(n-1)!}{(x+y+z)^n}
+        \end{equation}
+    \end{sol}
+    
+\end{document}
