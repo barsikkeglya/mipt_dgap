@@ -49,11 +49,77 @@
         \end{equation*}
     \end{problem}
     \begin{sol}
-        \begin{equation}
-            f(x,y)
-        \end{equation}
+        \begin{eqnarray*}
+            df&=&\alpha(1+x)^{\alpha-1}(1+y)^\beta (1+z)^\gamma dx+\\ 
+            &+&\beta(1+y)^{\beta-1}(1+x)^\alpha(1+z)^\gamma dy+\\ 
+            &+&\gamma(1+z)^{\gamma-1}(1+x)^\alpha(1+y)^\beta dz
+        \end{eqnarray*}
+        \begin{eqnarray*}
+            d^2f&=\alpha(\alpha-1)(1+x)^{\alpha-2}(1+y)^\beta(1+z)^\gamma dx\otimes dx&+\\ 
+            &+\alpha\beta(1+x)^{\alpha-1}(1+y)^{\beta-1}(1+z)^\gamma dx\otimes dy&+\\
+            &+\alpha\gamma(1+x)^{\alpha-1}(1+y)^\beta(1+z)^{\gamma-1}dx\otimes dz&+\\ 
+            &+\beta(\beta-1)(1+x)^\alpha(1+y)^{\beta-2}(1+z)^\gamma dy\otimes dy&+\\ 
+            &+\alpha\beta(1+x)^{\alpha-1}(1+y)^{\beta-1}(1+z)^\gamma dx\otimes dy &+\\ 
+            &+\beta\gamma(1+x)^\alpha (1+y)^{\beta-1}(1+z)^{\gamma-1}dy\otimes dz&+\\ 
+            &+\gamma(\gamma-1)(1+x)^\alpha(1+y)^\beta(1+z)^{\gamma-2} dz\otimes dz&+\\ 
+            &+\alpha\gamma(1+x)^{\alpha-1}(1+y)^\beta(1+z)^{\gamma-1}dx\otimes dz&+\\ 
+            &+\beta\gamma(1+x)^\alpha(1+y)^{\beta-1}(1+z)^{\gamma-1}dy\otimes dz&+
+        \end{eqnarray*}
     \end{sol}
 	
+    \begin{problem}[Т15а]
+        Найдите вторые частные производные в точке (1,1) функции $f(x,y)$ заданной неявно соотношением
+        $$ ef=e^{x+y+f} $$
+    \end{problem}
+    \begin{sol}
+        \begin{eqnarray*}
+            edf=&e^{x+y+f}(dx+dy+df)\\ 
+            edf-efdf=&ef(dx+dy)\\ 
+            df=&(1-f)^{-1}f(dx+dy)\\ 
+            d^2f=&(1-f)^{-2}(dfdx+dfdy+fdx^2+fdy^2)(1-f)+(f(dx+dy)df)
+        \end{eqnarray*}
+        \begin{eqnarray*}
+            d^2f=(1-f)^{-2}((fdx^2+fdxdy+fdx^2+fdy^2)+\\ 
+            +(1-f)^{-1}(f^2dx^2+2f^2dxdy+f^2dy^2))
+        \end{eqnarray*}
+        Найдем $f(1,1)$:
+        \begin{eqnarray*}
+            f&=&e^{1+f}\\ 
+            \ln f&=&1+f\ (??)
+        \end{eqnarray*}
+    \end{sol}
+    \begin{problem}[Т15б]
+        Найдите вторые частные производные в точке $(1,1)$ функции $f(x,y)$ заданной неявно соотношением
+        \[
+          f^3-3xyf-2=0  
+        \]
+    \end{problem}
+    \begin{sol}
+        \begin{equation*}
+            3f^2df-3yfdx-3xfdy-3xydf=0
+        \end{equation*}
+        \begin{equation*}
+            df(3f^2-3xy)=3yfdx+3xfdy
+        \end{equation*}
+        \begin{equation*}
+            df=\frac{3yfdx+3xfdy}{3f^2-3xy}=\frac{2}{3}(dx+dy)
+        \end{equation*}
+        \begin{eqnarray*}
+            d^2f=\frac{(6fdxdy+3ydxdf+3xdydf)(3f^2-3xy)}{(3f^2-3xy)^2}-\\-\frac{(3yfdx+3xfdy)(6fdf-3ydx-3xdy)}{(3f^2-3xy)^2}\\ 
+            d^2f=\frac{(12dxdy+2dx(dx+dy)+2dy(dx+dy))\cdot9}{9^2}-\\ 
+            -\frac{6(dx+dy){5(dx+dy)}}{9^2}\\ 
+            d^2f=\frac{144dxdy+18dx^2+18dy^2}{9^2}-\frac{30dx^2+60dxdy+30dy^2}{9^2}\\ 
+            d^2f=\frac{1}{81}(84dxdy-12dx^2-12dy^2)
+        \end{eqnarray*}
+        Тогда
+        \begin{eqnarray}
+            \frac{\partial^2f}{\partial x^2}=\frac{-12}{81}\\ 
+            \frac{\partial^2f}{\partial y^2}=\frac{-12}{81}\\ 
+            \frac{\partial^2f}{\partial x\partial y}=\frac{42}{81}
+        \end{eqnarray}
+    \end{sol}
+
+
     \begin{problem}[Т16]
         Найдите частные производные всех порядков функции $f(x,y,z)=\ln{(x+y+z)}$
     \end{problem}
