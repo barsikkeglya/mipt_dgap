@@ -1,0 +1,329 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+%tikz (draw)
+
+\usepackage{tikz}
+
+%tikz libraries
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+
+\usepackage{float}
+
+\parindent=0ex
+
+\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/LAB_1_2_5} }
+
+
+
+\begin{document}
+	\input{titlepage.tex}
+	\newpage
+	\pagenumbering{arabic}
+
+	
+	\section{Аннотация}
+	
+	\paragraph{Чем мы вообще занимаемся?}
+	
+	Мы хотим рассмотреть задачу о мячике на вращающемся столе. Экспериментально можно убедиться, что у мячика есть стабильные конфигурации движения, а именно:\\
+	
+	\textit{Во-первых}, если дать мячику возможность раскрутится до скорости поверхности, а потом отпустить, он будет оставаться в том же месте.
+	\textit{Во-вторых}, если шарику придать небольшой толчок, он начет совершать круговые движения, причем за 2 оборота мяча стол совершает 5 или 7 полных оборотов, в зависимости от того полый ли мяч.\\
+	
+	В этой работе хотелось бы объяснить это явление физически, доказать соотношение 2:5 и 2:7, с помощью этого определить экспериментально момент инерции мяча.\\
+	
+	Основным источником теоретической части этой работы стала статья \cite{weltner}, в которой достаточно подробно описан вывод, однако некоторые промежуточные шаги отсутствуют. В моей работе все промежуточные шаги расписаны несколько подробнее.
+	
+	
+	\paragraph{Цель работы:} \hspace{-4mm} 
+	исследовать феномен кругового вращения шара на быстро вращающемся диске без проскальзывания, собрать экспериментальную установку, определить момент инерции шара экспериментально, сравнить с теоретическими значениями.
+	\paragraph{Используемые инструменты:} \hspace{-4mm} 
+	установка с вращающимся столом, шарики резиновые разного диаметра, мячики для настольного тенниса (сферы), секундомер, камера (для более точного измерения)\\
+	
+	Подробнее об установке, ее схеме и необходимых материалах мы поговорим после теоретической части.
+
+	\paragraph{План выполнения работы}
+	\begin{enumerate}
+		\item Получить уравнение движения мяча по вращающейся поверхности с учетом отсутствия проскальзывания\\
+		\item Найти решение этого уравнения\\
+		\item Собрать установку с вращающейся поверхностью\\
+		\item С помощью установки подтвердить правильность найденного решения, найти отношение периодов, найти момент инерции мяча. Сравнить с теоретическим
+	\end{enumerate}
+	
+	\section{Основные теоретические сведения}
+	
+	\subsection{Получение уравнения движения}
+	Далее принимаем следующие обозначения:
+	\begin{enumerate}
+		\item $\vec{v}_d$ -- вектор скорости некоторой точки на диске
+		\item $\vec{r}_d$ -- радиус вектор этой точки
+		\item $\vec{v}_b$ -- вектор скорости точки мячика, которая находится в соприкосновении с поверхностью
+		\item $\vec{\omega}_b$ -- вектор угловой скорости вращения мячика
+		\item $\vec{R}$ -- радиус вектор точки соприкосновения в системе координат мячика
+	\end{enumerate}
+	Скорость любой точки диска можно определить по формуле
+	\begin{equation}
+		\label{v_d}
+		\vec{v}_d=\vec{\omega}_d\times\vec{r}_d
+	\end{equation}
+	
+	Скорость точки соприкосновения шара определяется по формуле
+	\begin{equation}
+		\label{v_b}
+		\vec{v}_b=\dot{\vec{r}}+\vec{\omega}_b\times\vec{R}
+	\end{equation}
+	
+	Мы предполагаем, что мяч движется без проскальзывания. Тогда
+	\begin{equation}
+		\label{v_d=v_b}
+		\vec{v}_d=\vec{v}_b
+	\end{equation}
+	Подставляя \eqref{v_d} и \eqref{v_b} в \eqref{v_d=v_b} получим
+	\[
+	\vec{\omega}_d\times\vec{r}_d=\dot{\vec{r}}+\vec{\omega}_b\times\vec{R}
+	\]
+	\begin{equation}
+		\label{beforediff}
+		\vec{\omega}_b\times\vec{R}=\vec{\omega}_d\times\vec{r}-\dot{\vec{r}}
+	\end{equation}
+	Это уравнение мы можем продифференцировать и получим:
+	\begin{equation}
+		\label{afterdiff}
+		\dot{\vec{\omega}}_b\times\vec{R}=\dot{\vec{\omega}}_d\times\vec{r}-\ddot{\vec{r}}
+	\end{equation}
+	
+	Момент импульса шара можно определить по формуле:
+	\[
+	\vec{L}=I\vec{\omega}_b
+	\]
+	где $I$ -- момент инерции шара. Так как шар симметричен, его момент инерции не меняется (несмотря на то что ось, относительно которой он вращается, меняется).
+	
+	Тогда производная момента импульса по времени
+	\begin{equation}
+		\label{diffL}
+		\dot{\vec{L}}=I\frac{d\vec{\omega}_b}{dt}=I\dot{\vec{\omega}}_b=\vec{M}
+	\end{equation}
+	где $M$ -- момент силы трения, действующей на шар.
+	
+	\begin{equation}
+		I\dot{\vec{\omega}}_b=\vec{M}=\vec{R}\times\vec{F}
+	\end{equation}
+	По второму закону Ньютона
+	\begin{equation}
+		\label{2ndlawofmotion}
+		m\ddot{\vec{r}}=\vec{F}
+	\end{equation}
+	Подставляя это в предыдущее уравнение:
+	
+	\begin{equation}
+		I\dot{\vec{\omega}}_b=\vec{R}\times m\cdot\ddot{\vec{r}} 
+	\end{equation}
+	Подставляя это в \eqref{afterdiff}:
+	\begin{equation}
+		\label{beforesimple}
+		[\hspace{0.5mm}(\vec{R}/{I}) \times m \cdot \ddot{\vec{r}}\hspace{1mm}]\cdot\vec{R}=\vec{\omega}_d\times \dot{\vec{r}}-\ddot{\vec{r}}
+	\end{equation}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			%\draw [help lines] (0,0) grid (8,8);
+			%\draw[color=black!60, very thick](4,4) circle(4);
+			\filldraw[color=black!60, fill=black!5 ,very thick](5,5) circle(1);
+			\draw[arrows = {-Latex[width=0pt 5, length=5pt]}] (5,5) -- (5,4) node [pos=0.5, right=1mm] {$\vec{R}$};
+			\draw[arrows = {-Latex[width=0pt 5, length=5pt]}] (1,3.9) -- (5,3.9) node [pos=1,below=1mm] {$\vec{r}$};
+			\draw[arrows = {-Latex[width=0pt 5, length=15pt]}, thick] (1,3) -- (1,8) node [pos=0.97,left=1mm] {$y$};
+			\draw[arrows = {-Latex[width=0pt 5, length=15pt]}, thick] (0,3.8) -- (8,3.8) node [pos=0.97,below=1mm] {$x$};
+			\draw[very thick] (0,4) -- (8,4);
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}] (1,4) -- (1,7) node [pos=0.95,left=1mm] {$\vec{\omega}_d$};
+		\end{tikzpicture}
+		\caption{Векторы $\vec{\omega}_d$, $\vec{r}$, $\vec{R}$}
+	\end{figure}
+	$\vec{F}$ сила трения находится в плоскости диска, $\vec{R}$ перпендикулярен плоскости диска, ускорение $\ddot{\vec{r}}$ сонаправлено с $\vec{F}$, значит левую часть уравнения \eqref{beforesimple} можно упростить:
+	\begin{equation}
+		\label{firstsimple}
+		(R^2/I)\cdot m \cdot \ddot{\vec{r}}=\vec{\omega}_d\times\dot{\vec{r}}-\ddot{\vec{r}}
+	\end{equation}
+	Выражая ускорение получим
+	\begin{equation}
+		\label{ddot r}
+		\ddot{\vec{r}}=\frac{\vec{\omega}_d\times\dot{\vec{r}}}{(R^2/I)\cdot m + 1}
+	\end{equation}
+	
+	\subsection{Решение уравнения движения}
+	
+	Мы теперь хотим показать, что круговые орбиты радиуса $\rho$ вокруг некоторой точки $r_0$ с угловой скоростью $\omega_c$ являются решением этого уравнения движения.\\
+	\begin{eqnarray}
+		\vec{r}=\vec{r}_0+\vec{\rho}\\
+		\dot{\vec{r}}=\vec{\omega}_c\times\vec{\rho}\\
+		\ddot{\vec{r}}=-{\omega_c}^2\vec{\rho}
+	\end{eqnarray}
+	
+	Подставляя эти уравнения в \eqref{ddot r} мы получим
+	\begin{equation}
+		\label{substitution}
+		-\omega_c^2\vec{\rho}=\frac{\vec{\omega}_d\times (\vec{\omega}_c\times\vec{\rho})}{(R^2/I)\cdot m + 1}
+	\end{equation}
+	Обратим внимание на то, что $\vec{\omega}_c$ и $\vec{\omega}_d$ коллинеарны, $\vec{\omega}_c \perp \vec{\rho}$ тогда векторное произведение (тройное) упрощается и можно $\omega_c$ по модулю
+	\begin{equation}
+		\label{omega c}
+		\omega_c=\frac{\omega_d}{(R^2/I)\cdot m + 1}
+	\end{equation}
+	Отсюда и получается отношение угловых скоростей в 2:5 и 2:7. Заметим, что угловая скорость не зависит ни от массы мяча, ни от его размеров.\\
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			%\draw [help lines] (0,0) grid (8,8);
+			\draw[color=black!60, very thick](4,4) circle(4);
+			\filldraw[color=black,very thick](4,4) circle(0.05);
+			\draw[thin, color=black](4,4) circle(0.2) node [below right = 1.2mm] {$\vec{\omega}_d$};
+			\draw[thin, dashed](5,5) circle(2);
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}] (4,4) -- (5,5) node [pos=1,right=1mm] {$\vec{r}_0$};
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}] (5,5) -- (4,6.75) node [pos=0.97,right=2mm] {$\vec{\rho}$};
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}] (4,4) -- (4,6.75) node [pos=0.75,left=1mm] {$\vec{r}$};
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}, thin] (4,0) -- (4,8) node [pos=0.97,left=1mm] {$y$};
+			\draw[arrows = {-Latex[width=0pt 10, length=10pt]}, thin] (0,4) -- (8,4) node [pos=0.97,below=1mm] {$x$};
+		\end{tikzpicture}
+		\caption{Орбита мяча и векторы $\vec{r}_0$, $\vec{\rho}$, $\vec{r}$}
+	\end{figure}
+	
+	Теперь мы можем определить константы $\vec{r}_0$ и $\rho$ из начальных условий $\vec{r}(0)$ и $v(0)$:
+	\begin{eqnarray}
+		\vec{v}(0)&=&\vec{\omega}_c\times\vec{\rho} \\
+		\rho&=&v(0)/\omega_c \label{rho}
+	\end{eqnarray}
+	Вектор $\vec{r}_0$ можно найти из его определения $\vec{r}=\vec{r}_0+\vec{\rho}$:
+	\begin{equation}
+		\vec{r}_0=\vec{r}(0)-\vec{\rho}(0)
+	\end{equation}
+	тут $\vec{r}(0)$ -- положение мячика в момент толчка, $\vec{\rho}(0)$ рассчитывается из \eqref{rho}.\\
+	
+	Можно заметить, что если начальная скорость $\vec{v}(0) = 0$, то есть толчка не произошло, то $\rho=0$, значит мячик будет оставаться в том же месте.\\
+	
+	Вектор $\vec{r}_0$ -- центра орбиты можно представить в координатном виде:
+	\begin{align}
+		\vec{r}_0 & = \begin{pmatrix}
+			x(0)-(v_x(0)/\omega_c)\\
+			y(0)-(v_y(0)/\omega_c)\\
+			0
+		\end{pmatrix}
+	\end{align}
+	
+	\subsection{Учет силы тяжести при наклоне диска}
+	Если диск наклонить, то можно наблюдать смещение центра окружности в направлении, перпендикулярном наклону. Это кажется нелогичным, потому что некомпенсированная часть силы тяжести направлена в другую сторону. Давайте попробуем объяснить этот эффект.
+	\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		%\draw [help lines] (0,0) grid (8,8);
+		\filldraw[color=black!60,fill=black!5, very thick](3,4.6) circle(0.5);
+		\draw[very thick] (7,2) -- (1,5);
+		\draw[arrows = {-Latex[width=0pt 10, length=10pt]}] (4,3.5) -- (6,7) node [pos=0.97,right=1mm] {$\vec{\omega}_d$};
+		\draw[arrows = {-Latex[width=0pt 5, length=10pt]}] (3,4.6) -- (3,2.6) node [pos=0.97,left=1mm] {$m\vec{g}$};
+		\draw[thin] (7,2) -- (1,2);
+		\draw[thick] (6,2) arc (180:154:1) node [pos=0.5,left=0.1mm] {$\alpha$};
+	\end{tikzpicture}
+	\caption{Диск под наклоном}
+	\end{figure}
+	
+	
+	Этот случай эквивалентен тому, что к уравнению \eqref{2ndlawofmotion} добавляется постоянная сила $\vec{F}_0$:
+	\begin{equation}
+		\label{const_force}
+		m\ddot{\vec{r}}=\vec{F}+\vec{F}_0
+	\end{equation}
+	Повторяя шаги первого вывода получаем:
+	\begin{eqnarray}
+		I\dot{\vec{\omega}}_b=\vec{R}\times m\cdot\ddot{\vec{r}}+\vec{R}\times \vec{F}_0\\
+		(R^2/I)\cdot m \cdot \ddot{\vec{r}}-(R^2/I)\vec{F}_0=\vec{\omega}_d\times\dot{\vec{r}}-\ddot{\vec{r}} \label{important}
+	\end{eqnarray}
+	\begin{equation}
+		\label{ddotr2}
+			\ddot{\vec{r}}=\frac{\vec{\omega}_d \times \dot{\vec{r}}+(R^2/I)\vec{F}_0}{(R^2/I)\cdot m + 1}
+	\end{equation}
+	Решением этого уравнения будет:
+	\begin{equation}
+		\label{sol}
+		\vec{r}=\vec{r}_0+\vec{\rho}+\vec{v_d}\cdot t
+	\end{equation}
+	где $\vec{v_d}$ -- постоянная скорость смещения. Посчитаем производные и поставим в выражение \eqref{important}.
+	\begin{eqnarray}
+		\dot{\vec{r}}&=&\vec{\omega}_c\times\vec{\rho} + \vec{v}_d\\
+		\ddot{\vec{r}}&=&-{\omega_c}^2\vec{\rho}
+	\end{eqnarray}
+	\begin{equation}
+		(R^2/I)\cdot m \cdot (-\omega_c^2\vec{\rho})-(R^2/I) \vec{F}_0=\vec{\omega}_d\times(\vec{\omega}_c\times\vec{\rho}+\vec{v}_d)+\omega_c^2\vec{\rho}
+	\end{equation}
+	\begin{equation}
+		-(R^2/I)\vec{F}_0=\vec{\omega}_d\times (\vec{\omega}_c\times\vec{\rho})+\vec{\omega}_d\times\vec{v}_d+\omega_c^2\vec{\rho}\cdot((R^2/I)\cdot m + 1)
+	\end{equation}
+	Вспомним уравнение \eqref{substitution}: оно справедливо и для этого случая. Тогда первое и третье слагаемые сокращаются, окончательно силу можно найти по формуле:
+	\begin{equation}
+		\label{force_0}
+		\vec{F}_0=-\frac{I}{R^2}(\vec{\omega}_d\times\vec{v}_d)
+	\end{equation}
+	Это означает, что вектор скорости смещения $\vec{v}_d$ перпендикулярен дополнительной силе $\vec{F}_0$\\
+	Численно скорость $v_d$ можно найти по формуле:
+	\begin{equation}
+		\label{v_h}
+		v_d=\frac{F_0 R^2}{I\omega_d}
+	\end{equation}
+	\section{Экспериментальная установка и измерения}
+	Так как быстро вращающийся стол купить сложно, да и бюджет <<лаборатории>> ограничен, пришлось придумывать свое решение. В качестве основания для установки будет маленький вентилятор, питающийся от USB кабеля. В нем обычный электромоторчик, который мы прикрепим к диску из фанеры диаметром $33.8$ cm и толщиной $6$ mm. Кроме этого (и скотча) больше ничего не нужно, однако для нашей установки был использован еще один диск меньшего диаметра для большей стабильности системы.
+	\subsection{Калибровка и балансировка}
+	В этой работе очень важно иметь хорошо сбалансированную установку, так как малейшие вибрации и неровности могут создавать помехи эксперименту. Идеально в итоге установку сбалансировать не удалось, однако желаемый результат (учитывая ограниченный бюджет и силы) удалось достичь.
+	\subsection{Измерения}
+	В процессе работы нам удалось воспроизвести все феномены, изложенные ранее, а именно:
+	\begin{itemize}
+		\item Отсутствие движения при разгоне до скорости стола\\
+		\item Круговые орбиты при некотором начальном толчке\\
+		\item Движение, перпендикулярное дополнительной силе при наклоне стола
+	\end{itemize}
+	Далее, с помощью камеры телефона, было получено искомое соотношение 2:5 оборотам для мячика для настольного тенниса, что соответствует теории. Для однородных мячиков соотношение оказалось получить труднее, так как купленные мячики имели очень высокое сцепление с поверхностью, что иногда приводило к разрушению установки.\\
+	
+	Также было экспериментально установлено, что радиус орбиты остается неизменным при одинаковых толчках. К сожалению точного метода измерения начальной скорости толчка у нас нет.
+	
+	\section{Выводы}
+	\subsection{Применимость работы и дальнейшее изучение}
+	Этот эксперимент можно использовать как интересную физическую демонстрацию и, возможно, лабораторную работу по измерению момента инерции шара/сферы. Похожие установки стоят в некоторых физических музеях.\\
+	
+	Кроме того, задача о вращающемся столе и мячике является основой для очень интересной статьи \cite{dynamics}, которая посвящена исследованию динамики движения мячика, учитывая проскальзывание. \\
+	
+	\textbf{Еще одна статья от \emph{Klaus Weltner} -- \cite{weltner2}. В ней автор показывает способ измерения коэффициента трения качения с помощью такой установки, что может быть очень полезно в повседневной жизни.\\}
+	
+	Задача о мячике на вращающейся плоскости в том числе может быть расширена до любых тел вращения (дисков, цилиндров, и т.д.). Там эффекты бывают еще более интересные и неожиданные, чем тут. В статье \cite{dynamics} разобран как раз такой, обобщенный случай.\\
+	
+	В статье \cite{Gersten} приводятся похожие выкладки с моей работой и статьей \cite{weltner}, в ней еще рассматривается проскальзывание мячика, а также возможность изменения угловой скорости стола со временем. Авторы работы приводят интересные задачи для читателя и представляют диск, каждая часть которого может вращаться с разной скоростью.\\
+	
+	В статье \cite{Warren} приводится энергетический способ получения и решения уравнения движения.
+	
+	\subsection{Выводы}
+	В той или иной степени, нам удалось достичь всех поставленных целей. Все желаемые наблюдения были проведены, в том числе отношение угловых скоростей 2:5. В процессе выполнения эксперимента возникли сложности с балансировкой установки, что во многих случаях приводит к нестабильным орбитам, и мячик улетает слишком быстро.
+	
+	\begin{thebibliography}{9}
+		\bibitem{weltner}
+		Klaus Weltner (1979) \emph{Stable circular orbits of freely moving balls on rotating discs}, Am. J. Phys, University of Frankfurt.
+		\bibitem{dynamics}
+		Kyeong Min Kim, Donggeon Oh, Junghwan Lee, Young-Gui Yoon, Chan-Oung Park (2018), \emph{Dynamics of Cylindrical and Spherical Objects on a Turntable}. ffhal-01761333f
+		\bibitem{weltner2}
+		Klaus Weltner (1987), \emph{Central drift of freely moving balls on rotating disks: A new method to measure coefficients of rolling friction}, Am. J. Phys, University of Frankfurt.
+		\bibitem{Gersten}
+		Gersten, Joel \& Soodak, Harry \& Tiersten, Martin. (1992). \emph{Ball moving on stationary or rotating horizontal surface}. Am. J. Phys, 60. 43-47. 10.1119/1.17041. 
+		\bibitem{Warren}
+		Warren Weckesser (1997) \emph{A ball rolling on a freely spinning turntable}, Am. J. Phys, 65, Department of Mathematical Sciences, Rensselaer Polytechnic Institute, New York
+		
+	\end{thebibliography}
+\end{document}
