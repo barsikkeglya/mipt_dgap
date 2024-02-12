@@ -15,19 +15,14 @@ unsigned max_unique_subarray_length(char const symbols[], unsigned size) {
     unsigned max_length = 0;
     char copy[90000] = {};
     for (unsigned i = 0; i < size; i++){
-        for (unsigned j = i; j < size; j++){
+        unsigned j = i;
+        while (j < size){
             unsigned length = j-i+1;
             for (unsigned pointer = 0; pointer < j-i+1; pointer++){
                 copy[pointer]=symbols[pointer+i];
-                //std::cout << copy[pointer] << " ";
-            }
-            if (not check_for_repeat(copy,length)){
-                if (length > max_length){
-                    max_length = length;
-                    std::cout << "new " << max_length << " via " << i << " to " << j << "\n";
-                }
             }
         }
+        
     }
     return max_length;
 }
