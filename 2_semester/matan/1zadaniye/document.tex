@@ -43,28 +43,43 @@
 	\pagenumbering{arabic}
     
     \begin{problem}[Т14]
-        Найдите вторые частные производные функции в данной точке
+        Найдите вторые частные производные функции в данной точке (0,0,0)
         \begin{equation*}
-            f(x,y,z)=(1+x)^{\alpha}(1+y)^{\beta}(1+z)^{\gamma}
+            f(x,y,z)=(1+x)^{\alpha}(1+y)^{\beta}(1+z^\gamma)
         \end{equation*}
     \end{problem}
     \begin{sol}
-        \begin{eqnarray*}
-            df&=&\alpha(1+x)^{\alpha-1}(1+y)^\beta (1+z)^\gamma dx+\\ 
-            &+&\beta(1+y)^{\beta-1}(1+x)^\alpha(1+z)^\gamma dy+\\ 
-            &+&\gamma(1+z)^{\gamma-1}(1+x)^\alpha(1+y)^\beta dz
-        \end{eqnarray*}
-        \begin{eqnarray*}
-            d^2f&=\alpha(\alpha-1)(1+x)^{\alpha-2}(1+y)^\beta(1+z)^\gamma dx\otimes dx&+\\ 
-            &+\alpha\beta(1+x)^{\alpha-1}(1+y)^{\beta-1}(1+z)^\gamma dx\otimes dy&+\\
-            &+\alpha\gamma(1+x)^{\alpha-1}(1+y)^\beta(1+z)^{\gamma-1}dx\otimes dz&+\\ 
-            &+\beta(\beta-1)(1+x)^\alpha(1+y)^{\beta-2}(1+z)^\gamma dy\otimes dy&+\\ 
-            &+\alpha\beta(1+x)^{\alpha-1}(1+y)^{\beta-1}(1+z)^\gamma dx\otimes dy &+\\ 
-            &+\beta\gamma(1+x)^\alpha (1+y)^{\beta-1}(1+z)^{\gamma-1}dy\otimes dz&+\\ 
-            &+\gamma(\gamma-1)(1+x)^\alpha(1+y)^\beta(1+z)^{\gamma-2} dz\otimes dz&+\\ 
-            &+\alpha\gamma(1+x)^{\alpha-1}(1+y)^\beta(1+z)^{\gamma-1}dx\otimes dz&+\\ 
-            &+\beta\gamma(1+x)^\alpha(1+y)^{\beta-1}(1+z)^{\gamma-1}dy\otimes dz&+
-        \end{eqnarray*}
+        \begin{equation*}
+            \ln f =\alpha \ln(1+x) + \beta \ln(1+y)+\ln(1+z^\gamma)
+        \end{equation*}
+        \begin{equation*}
+            d\ln f=\frac{\alpha dx}{1+x}+\frac{\beta dy}{1+y}+\frac{\gamma z^{\gamma-1dz}}{1+z^\gamma}
+        \end{equation*}
+        \begin{equation*}
+            d\ln f=\frac{df}{f}\rightarrow df(0,0,0)=f(0,0,0)(\alpha dx+\beta dy)
+        \end{equation*}
+        \begin{equation}
+            df(0,0,0)=\alpha dx+\beta dy
+        \end{equation}
+        \begin{equation*}
+            d^2f=d(df) \quad d^2f=d(fd\ln f)
+        \end{equation*}
+        \begin{equation*}
+            d^2f(x,y,z)=df(x,y,z)\otimes\frac{df(x,y,z)}{f(x,y,z)}+f(x,y,z)d^2\ln f(x,y,z)
+        \end{equation*}
+        \begin{equation*}
+            \frac{df(0,0,0)\otimes df(0,0,0)}{f(0,0,0)}=(\alpha dx+\beta dy)^2=\alpha^2dx\otimes dx+2\alpha \beta dx\otimes dy+\beta^2dy\otimes dy
+        \end{equation*}
+        \begin{equation*}
+            fd^2\ln f(0,0,0)=1\cdot d\left(\frac{\alpha dx}{1+x}+\frac{\beta dy}{1+y}+\frac{\gamma z^{\gamma-1}dz}{1+z^\gamma} \right)
+        \end{equation*}
+        \begin{equation*}
+            fd^2\ln f(0,0,0)=-\frac{\alpha dx^2}{(1+x)^2}-\frac{\beta dy^2}{(1+y)^2}+\frac{\gamma (\gamma-1)z^{\gamma-1}[z+z^{\gamma+1}-z\cdot\gamma z^{\gamma-1}]dz^2}{(1+z^\gamma)^2}
+        \end{equation*}
+        Итого
+        \begin{equation*}
+            d^2f(0,0,0)=\alpha^2dx^2+2\alpha\beta dxdy+\beta^2dy^2-\alpha dx^2 -\beta dy^2
+        \end{equation*}
     \end{sol}
 	
     \begin{problem}[Т15а]

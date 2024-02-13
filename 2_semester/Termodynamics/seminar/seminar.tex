@@ -34,29 +34,78 @@
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\fancy}[1]{{\mathbb{#1}}}
 \DeclareMathOperator{\sgn}{sgn}
-\newtheorem{problem}{Задача}[]
-\newenvironment{sol}{\paragraph{Решение}}{}
 \renewcommand\thesection{\arabic{section}}
 \newcommand{\uni}{\cup}
 \newcommand{\inter}{\cap}
+\newtheorem{problem}[]{Задача}
+\theoremstyle{definition}
+\newtheorem*{solution}{Решение}
+
+
 
 \begin{document}
-    \tableofcontents
+    %\tableofcontents
+
     \pagenumbering{arabic}
-    \subsubsection*{Холодильная машина}
+    \subsection*{Холодильная машина}
+    
     \begin{align}
         \eta_\text{хол} =\frac{Q_{\text{хол}}}{A} =\frac{|Q_\text{хол}|}{Q_\text{наг}-|Q_\text{хол}|} \\
         \eta_\text{тепл} = \frac{Q_{\text{нагр}}}{A} \\
         \eta_\text{хол} = \eta_\text{тепл}-1
     \end{align}
-    \begin{problem}[3.25]
-    \end{problem}
-    \begin{figure}[H]
-        \centering
-        \includegraphics*[width=1\textwidth]{img/3.25.png}
-    \end{figure}
-    \textit{ Sol. }
-    \begin{eqnarray*}
-        T_\text{н}=T_
-    \end{eqnarray*}
+    \subsection*{Задачи}
+        \begin{problem}[3.25]
+            \begin{figure}[H]
+                \centering
+                \includegraphics*[width=1\textwidth]{img/3.25.png}
+            \end{figure}
+        \end{problem}
+        \begin{solution}
+            \begin{eqnarray*}
+                T_\text{н}:=T_\text{в} \qquad T_\text{х}:=T_\text{л}
+            \end{eqnarray*}
+            Температура холодильника $T_\text{х}$ меняется.
+            \begin{align*}
+                \frac{Q_\text{н}}{Q_\text{х}}=&\frac{T_\text{н}}{T_\text{х}}\\
+                Q_\text{н}=cm_1dT, \qquad &Q_\text{х}=qdm \\ 
+                \frac{dT}{T}=&\frac{qdm}{m_1cT_\text{х}} \\ 
+                \ln \frac{T_1}{T}=&\frac{-m_2q}{m_1cT_2} \\
+                \Aboxed{ T=T_1\exp&{\frac{-m_2q}{m_1cT_2}} } \\
+                \Aboxed{A=Q_\text{н}-|Q_\text{хол}|=&cm_1|T-T_1|-qm_2}
+            \end{align*}
+        \end{solution}
+        
+        \begin{problem}[T2]
+            \begin{figure}
+                \centering
+                \includegraphics*[width=1\linewidth]{img/t2.png}
+            \end{figure}
+        \end{problem}
+        \begin{solution}
+            Индекс <<h>> обозначает нагреватель, <<c>> -- холодильник. Заметим, что процесс изохорический
+            \begin{align*}
+                \frac{dQ_h}{dQ_c}=\frac{dU_h}{dU_c}&\\ 
+                \frac{T_h}{T_c}=\frac{dT_h}{-dT_c} \rightarrow \int_{T_0}^{T_2}\frac{dT_h}{T_h}=-\int_{T_0}^{T_1}\frac{dT_c}{T_c}&\\
+                \ln \frac{T_2}{T_0}=\ln\frac{T_0}{T_1}\rightarrow T_2=\Aboxed{\frac{T_0^2}{T_1}}=450 \text{K}&\\
+                A=Q_h-|Q_c|=\Delta U_h-|\Delta U_c|&\\
+                \Delta U_h=C_V |T_2-T_0| \quad \Delta U_c=C_V|T_1-T_0|&\\
+                A=\Aboxed{\frac{5}{2}R(T_2-T_0)-\frac{5}{2}R(T_0-T_1)}=1038 \text{J}
+            \end{align*}
+        \end{solution}
+
+        \begin{problem}[3.43]
+            \begin{figure}[H]
+                \centering
+                \includegraphics*[width=1\linewidth]{img/3.43.png}
+            \end{figure}
+        \end{problem}
+        \begin{solution}
+            \begin{align*}
+                P_{transfer}=\alpha(t_2-t_1), \quad P_{transfer}=P\\ 
+                \dot{Q_h}-|\dot{Q_c}|=\dot{A}=\eta\alpha(t_2-t_1)\\
+                \frac{\dot{Q_h}}{\dot{Q_c}}=\frac{Q_h}{Q_c}=\frac{t_x}{t_2}\\
+                \dot{Q_h}=\alpha(t_x-t_2)
+            \end{align*}
+        \end{solution}
 \end{document}
