@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+%tikz (draw)
+
+\usepackage{tikz}
+
+%tikz libraries
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+
+\usepackage{float}
+
+\parindent=0ex
+
+%\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+\DeclareMathOperator{\sgn}{sgn}
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+
+\begin{document}
+    \tableofcontents
+    \pagenumbering{arabic}
+    \subsubsection*{Холодильная машина}
+    \begin{align}
+        \eta_\text{хол} =\frac{Q_{\text{хол}}}{A} =\frac{|Q_\text{хол}|}{Q_\text{наг}-|Q_\text{хол}|} \\
+        \eta_\text{тепл} = \frac{Q_{\text{нагр}}}{A} \\
+        \eta_\text{хол} = \eta_\text{тепл}-1
+    \end{align}
+    \begin{problem}[3.25]
+    \end{problem}
+    \begin{figure}[H]
+        \centering
+        \includegraphics*[width=1\textwidth]{img/3.25.png}
+    \end{figure}
+    \textit{ Sol. }
+    \begin{eqnarray*}
+        T_\text{н}=T_
+    \end{eqnarray*}
+\end{document}
