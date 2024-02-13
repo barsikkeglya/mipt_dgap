@@ -117,20 +117,23 @@
             df(3f^2-3xy)=3yfdx+3xfdy
         \end{equation*}
         \begin{equation*}
-            df=\frac{3yfdx+3xfdy}{3f^2-3xy}=\frac{2}{3}(dx+dy)
+            df=\frac{yfdx+xfdy}{f^2-xy}=\frac{2}{3}(dx+dy)
         \end{equation*}
         \begin{eqnarray*}
-            d^2f=\frac{(6fdxdy+3ydxdf+3xdydf)(3f^2-3xy)}{(3f^2-3xy)^2}-\\-\frac{(3yfdx+3xfdy)(6fdf-3ydx-3xdy)}{(3f^2-3xy)^2}\\ 
-            d^2f=\frac{(12dxdy+2dx(dx+dy)+2dy(dx+dy))\cdot9}{9^2}-\\ 
-            -\frac{6(dx+dy){5(dx+dy)}}{9^2}\\ 
-            d^2f=\frac{144dxdy+18dx^2+18dy^2}{9^2}-\frac{30dx^2+60dxdy+30dy^2}{9^2}\\ 
-            d^2f=\frac{1}{81}(84dxdy-12dx^2-12dy^2)
+            d^2f=\frac{1}{(f^2-xy)^2}((fdxdy+ydxdf+fdxdy+xdydf)(f^2-xy)-
+            \\-(yfdx+xfdy)(2fdf-xdy-ydx))
         \end{eqnarray*}
+        \begin{equation*}
+            d^2f(1,1)=\frac{1}{9}(3(4dxdy+df(dx+dy))-2(dx+dy)(4df-dx-dy))
+        \end{equation*}
+        \begin{equation*}
+            d^2f(1,1)=\frac{12dxdy-\frac{4}{3}(dx+dy)^2}{9}=\frac{-4}{27}dx^2-\frac{4}{27}dy^2+\frac{28}{27}dxdy
+        \end{equation*}
         Тогда
         \begin{eqnarray}
-            \frac{\partial^2f}{\partial x^2}=\frac{-12}{81}\\ 
-            \frac{\partial^2f}{\partial y^2}=\frac{-12}{81}\\ 
-            \frac{\partial^2f}{\partial x\partial y}=\frac{42}{81}
+            \frac{\partial^2f}{\partial x^2}=\frac{-4}{27}\\ 
+            \frac{\partial^2f}{\partial y^2}=\frac{-4}{27}\\ 
+            \frac{\partial^2f}{\partial x\partial y}=\frac{14}{27}
         \end{eqnarray}
     \end{sol}
 
