@@ -47,7 +47,6 @@ bool binary_search(int a[], int size, int x){
     return false;
 }
 
-
 void fill(int a[]){
     //fills the array with positive integers. guaranteed to be (strictly) ascending.
     unsigned seed = time(NULL);
@@ -96,17 +95,16 @@ unsigned timing(bool (*search)(int a[], int size, int needed), int sample_size, 
 void run_auto(bool (*search)(int a[], int size, int needed), int runs, int default_size, int sample_size, bool average){
     for (int run = 0; run < runs; run++){
         std::cout << "run no " << run << "\n\n";
-        for (int n = default_size; n <= maxlen;  n+=3000){
-            std::cout << timing(binary_search, sample_size, n, average) << "\n";
+        for (int n = default_size; n <= maxlen;  n+=1000){
+            std::cout << timing(binary_search, sample_size, n, average) << "," << "\n";
         }
         std::cout << "\n\n\n\n";
     }
 }
 
-
 int main(){
     int default_size = 100; //start array length
-    int sample_size = 100000; //amount of runs per one array length
+    int sample_size = 500000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = false;
     fill(a); //fills array with random integers (sorted ascending)
@@ -116,8 +114,8 @@ int main(){
     run_auto(binary_search, runs, default_size, sample_size, average); //end of run output
 
     std::cout << "N_ARRAY_VALUES" << "\n\n";
-    for (int n = default_size; n <= maxlen; n+=3000){
-        std::cout << n << "\n";
+    for (int n = default_size; n <= maxlen; n+=1000){
+        std::cout << n << "," << "\n";
     } //separate output for array length values
 
     

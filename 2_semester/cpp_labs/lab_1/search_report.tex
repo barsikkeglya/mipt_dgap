@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+
+%tikz (draw)
+
+\usepackage{tikz}
+\usepackage{pstricks-add}
+%tikz libraries
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+\usetikzlibrary{arrows}
+\usepackage{float}
+
+\parindent=0ex
+
+\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
+
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+\DeclareMathOperator{\sgn}{sgn}
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+
+\begin{document}
+	\input{titlepage.tex}
+	\newpage
+	\pagenumbering{arabic}
+    
+    \section*{Асимптотическая сложность алгоритмов поиска}
+    Для выполнения первого задания был написан код (search.cpp), в котором реализованы следующие методы:
+    \begin{enumerate}
+        \item linear\_search -- линейный поиск
+        \item binary\_search -- бинарный поиск
+        \item fill -- заполнение массива строго возрастающими целыми положительными числами
+        \item generate\_needed -- генерация случайного числа (в массиве или нет, учитывая какой случай нужен)
+        \item print\_arr -- выводит весь массив, нужен для debug
+        \item timing -- возвращает время, затраченное алгоритмом на выполнение, принимает в качестве аргументов саму функцию поиска, размер тестируемого массива, количество прогонок, флаг среднего или худшего случая.
+        \item run\_auto -- делает заданное число полных прогонов (для всех размеров массива), может быть необходимо для уменьшения влияния task handler операционной системы. 
+    \end{enumerate}
+    Худшая асимптотическая сложность для линейного поиска равна $O(n)$, причем время для среднего случая (если случайные числа распределены равномерно) должно быть в среднем в два раза меньше.
+    
+    Для бинарного поиска худшая сложность $O(\log n)$.
+
+    
+\end{document}
