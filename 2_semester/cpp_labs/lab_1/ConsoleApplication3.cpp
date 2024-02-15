@@ -9,7 +9,7 @@ using namespace std;
 #include <malloc.h>
 #include <memory.h>
 
-long const maxlen = 1000000;
+long const maxlen = 100000;
 static std::array <long, maxlen> a;
 
 

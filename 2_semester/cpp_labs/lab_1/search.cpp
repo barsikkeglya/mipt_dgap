@@ -38,7 +38,7 @@ int generate_needed(int start, int end){
 
 void printarr(int a[]){
     for (int i = 0; i < maxlen; i++){
-        std::cout << a[i] << " ";
+        std::cout << i << " " << a[i] << "\n";
     }
 }
 
@@ -57,10 +57,10 @@ unsigned timing(int sample_size, int check_size){
 
 int main(){
     int size = default_size;
-    int sample_size = 50000;
+    int sample_size = 5000;
     int runs = 2;
     fill(a);
-    //printarr(a);
+    printarr(a);
     std::cout << "done fill\n";
     for (int run = 0; run < runs; run++){
         for (int n = default_size; n <= maxlen; n += 3000){
