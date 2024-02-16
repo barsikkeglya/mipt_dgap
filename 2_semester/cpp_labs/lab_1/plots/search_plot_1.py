@@ -2017,18 +2017,18 @@ n_values_sum = [100,
 81100,
 90100,
 99100]
-t_lin_sum_search = [47,
-9492,
-18024,
-18667,
-37486,
-40012,
-60968,
-64666,
-76654,
-67162,
-100785,
-68174]
+t_lin_sum_search = [0,
+186,
+381,
+608,
+703,
+888,
+1068,
+1254,
+1428,
+1672,
+1858,
+2058]
 
 alpha = 5.518884851723676
 
@@ -2042,5 +2042,8 @@ print(110/max(fit_y))
 #plt.scatter(n_values, t_bin_search, s=0.5)
 #plt.plot(n_values, t_bin_search, linewidth=0.1)
 #plt.plot(fit_x,fit_y,color=(0,.5,0))
-plt.plot(n_values_sum,t_lin_sum_search)
+plt.plot(n_values_sum,t_lin_sum_search,)
+plt.title('smart_sum_search, average:false, \n sample 10000, run 2, size 100+=9000')
+plt.xlabel("n, array_size")
+plt.ylabel("t, ms")
 plt.show()
