@@ -2005,6 +2005,31 @@ t_bin_search = [51,
 111,
 110]
 
+n_values_sum = [100,
+9100,
+18100,
+27100,
+36100,
+45100,
+54100,
+63100,
+72100,
+81100,
+90100,
+99100]
+t_lin_sum_search = [47,
+9492,
+18024,
+18667,
+37486,
+40012,
+60968,
+64666,
+76654,
+67162,
+100785,
+68174]
+
 alpha = 5.518884851723676
 
 fit_x = [i for i in range(1,1000000,5)]
@@ -2014,7 +2039,8 @@ for x in fit_x:
 
 print(110/max(fit_y))
 
-plt.scatter(n_values, t_bin_search, s=0.5)
-plt.plot(n_values, t_bin_search, linewidth=0.1)
-plt.plot(fit_x,fit_y,color=(0,.5,0))
+#plt.scatter(n_values, t_bin_search, s=0.5)
+#plt.plot(n_values, t_bin_search, linewidth=0.1)
+#plt.plot(fit_x,fit_y,color=(0,.5,0))
+plt.plot(n_values_sum,t_lin_sum_search)
 plt.show()
