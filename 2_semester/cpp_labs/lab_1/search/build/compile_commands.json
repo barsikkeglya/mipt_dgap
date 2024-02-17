@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/George/Documents/mipt_dgap/build",
+  "command": "C:\\MinGW\\bin\\g++.exe   -g -o CMakeFiles\\asymptotic.dir\\main.cpp.obj -c C:\\Users\\George\\Documents\\mipt_dgap\\main.cpp",
+  "file": "C:/Users/George/Documents/mipt_dgap/main.cpp",
+  "output": "CMakeFiles/asymptotic.dir/main.cpp.obj"
+}
+]

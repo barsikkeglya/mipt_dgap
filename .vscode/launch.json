@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/George/Documents/mipt_dgap/2_semester/cpp/c",
-      "program": "c:/Users/George/Documents/mipt_dgap/2_semester/cpp/c/build/Debug/outDebug",
+      "cwd": "c:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_1/search",
+      "program": "c:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_1/search/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
