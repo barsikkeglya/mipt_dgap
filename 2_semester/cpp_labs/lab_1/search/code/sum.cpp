@@ -8,43 +8,39 @@
 search functions must have same signature.
 */
 
-const int maxlen=1000000; //maximum array length constant
+const int maxlen=50000; //maximum array length constant
 
 static int a[maxlen]; //static array
 
 
-bool linear_search(int a[], int size, int needed){
-    //linear search algorithm
-    for (int i = 0; i < size; i++){
-        if (a[i] == needed){
-            //std::cout << "found " << needed << "\n"; //debug line
-            return true;
+bool linear_sum_search(int a[], int size, int needed){
+    //linear sum search algorithm
+    for (int i = 0; i < size-1; i++){
+        for (int j = i+1; j < size; j++){
+            if (i != j){
+                if (a[i] + a[j] == needed)
+                    return true;
+            }
         }
     }
     return false;
 }
 
-bool binary_search(int a[], int size, int x){
-    int l = 0;
-    int r = size-1;
-    while (l <= r) {
-        int m = l + (r - l) / 2;
- 
-        // Check if x is present at mid
-        if (a[m] == x)
-            return true;
- 
-        // If x greater, ignore left half
-        if (a[m] < x)
-            l = m + 1;
- 
-        // If x is smaller, ignore right half
+bool smart_sum_search(int a[], int size, int needed){
+    int current_sum = 0;
+    int beg = 0;
+    int end = size - 1;
+    while (beg != end){
+        current_sum = a[beg] + a[end];
+        if (current_sum < needed)
+            beg += 1;
+        else if (current_sum > needed)
+            end -= 1;
         else
-            r = m - 1;
+            return true;
     }
- 
-    // If we reach here, then element was not present
     return false;
+
 }
 
 void fill(int a[]){
@@ -61,10 +57,11 @@ void fill(int a[]){
 
 int generate_needed(int start, int end, bool average){
     //generates needed value, bool average is flag to create -1 value that is guaranteed not to be in the array
-    int random_number = std::experimental::randint(start,end);
+    int random_number_1 = std::experimental::randint(start,end);
+    int random_number_2 = std::experimental::randint(start,end);
     if (not average)
-        return a[random_number]-1;
-    return a[random_number];
+        return -1;
+    return a[random_number_1]+a[random_number_2];
 }
 
 void print_arr(int a[]){
@@ -95,8 +92,9 @@ unsigned timing(bool (*search)(int a[], int size, int needed), int sample_size, 
 void run_auto(bool (*search)(int a[], int size, int needed), int runs, int default_size, int sample_size, bool average){
     for (int run = 0; run < runs; run++){
         std::cout << "run no " << run << "\n\n";
-        for (int n = default_size; n <= maxlen;  n+=1000){
-            std::cout << timing(binary_search, sample_size, n, average) << "," << "\n";
+        for (int n = default_size; n <= maxlen;  n = floor(n*1.5)){
+            std::cout << "(" << n << ","
+            << timing(search, sample_size, n, average) << ")";
         }
         std::cout << "\n\n\n\n";
     }
@@ -104,22 +102,15 @@ void run_auto(bool (*search)(int a[], int size, int needed), int runs, int defau
 
 int main(){
     int default_size = 100; //start array length
-    int sample_size = 500000; //amount of runs per one array length
+    int sample_size = 1000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = false;
     fill(a); //fills array with random integers (sorted ascending)
     //print_arr(a); //prints the array, debug purposes
     std::cout << "done fill\n"; //debug line, gives info about end of fill (and print_arr function)
 
-    run_auto(binary_search, runs, default_size, sample_size, average); //end of run output
+    run_auto(linear_sum_search, runs, default_size, sample_size, average); //end of run output
 
-    std::cout << "N_ARRAY_VALUES" << "\n\n";
-    for (int n = default_size; n <= maxlen; n+=1000){
-        std::cout << n << "," << "\n";
-    } //separate output for array length values
-
-    
-    
 
     return 0;
 }
