@@ -111,7 +111,7 @@ int main(){
     //print_arr(a); //prints the array, debug purposes
     std::cout << "done fill\n"; //debug line, gives info about end of fill (and print_arr function)
 
-    run_auto(linear_search, runs, default_size, sample_size, average); //end of run output
+    run_auto(binary_search, runs, default_size, sample_size, average); //end of run output
 
     return 0;
 }
