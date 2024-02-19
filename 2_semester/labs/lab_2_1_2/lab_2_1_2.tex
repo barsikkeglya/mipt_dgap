@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{report}
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
@@ -10,25 +10,33 @@
 \usepackage{gensymb}
 \usepackage{cancel} %cancel symbol
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{pgfplots}
+\usepackage{pgfkeys}
+%\usepackage[margin=3cm]{geometry}
+\pgfplotsset{compat=1.12}
+\usepackage{mathrsfs}
 
-\setlength{\parskip}{\baselineskip}%
-\setlength{\parindent}{0pt}%
+\usepackage[pagestyles]{titlesec}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries\centering}   {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing{\chapter}{0pt}{-48pt}{1cm}
 
 %tikz (draw)
 
 \usepackage{tikz}
-
+\usepackage{pstricks-add}
 %tikz libraries
 
 \usetikzlibrary{intersections}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{calc,angles,positioning}
-
+\usetikzlibrary{arrows}
 \usepackage{float}
 
 \parindent=0ex
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
 
-%\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
+\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
 
 \newcommand{\R}{{\mathbb R}}
 \newcommand{\N}{{\mathbb N}}
@@ -286,6 +294,44 @@
         \Aboxed{\gamma =& 1.282 \pm 0.089}
     \end{align}
 
+    \paragraph*{Экстраполяция результатов при $\Delta t \rightarrow 0$}
+    К сожалению достаточно сложно измерить время, которое был открыт клапан, поэтому будем использовать данные с большой погрешностью по времени. 
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.3]
+            \begin{axis}[
+                ymajorgrids=true,
+                xmajorgrids=true,
+                xlabel={$\Delta t, \ s$},
+                ylabel={$\gamma$},
+                legend pos = north west,
+                legend style={nodes={scale=1, transform shape}}, 
+                legend image post style={mark=*}
+            ]
+            \addplot[
+                only marks,mark=*,color=black,mark size = 1pt
+            ]
+            plot [error bars/.cd, y dir = both, x dir = both, y explicit, x explicit]
+            table[meta=label, x=t, y=gamma, x error = xe, y error=ye]{
+                gamma	t	xe	ye	label
+                1.222222222	1	0.15	0.089	a
+                1.246575342	0.7	0.15	0.089	a
+                1.258741259	0.7	0.15	0.089	a
+                1.256756757	0.7	0.15	0.089	a
+                1.382352941	0.2	0.15	0.089	a
+                1.342465753	0.4	0.15	0.089	a
+                1.306666667	0.5	0.15	0.089	a
+                1.301369863	0.5	0.15	0.089	a
+                1.287671233	0.7	0.15	0.089	a
+                1.297297297	0.5	0.15	0.089	a
+                1.301369863	0.5	0.15	0.089	a
+            };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Экстраполяция $\Delta t \rightarrow 0$}
+    \end{figure}
+    Видно, что при более маленьком времени $\Delta t$ наблюдается более высокий показатель адиабаты $\gamma$. При апроксимации МНК получаем прямую $\gamma=k\Delta t + b$, где $k\approx-0.21$, $b\approx 1.41$. Поэтому при $\Delta t \rightarrow 0 \ \gamma\rightarrow 1.41$. Этот результат выше табличного $\gamma=1.30$, так как за малое время $\Delta t \rightarrow 0$ давление не успевает сравняться с атмосферным. 
     \section*{Обсуждение полученных результатов и выводы}
     
     В результате работы мы успешно измерили показатель адиабаты для углекислого газа при комнатной температуре. Результат получен с погрешностью $\approx 6.9\%$, что достаточно много. Однако больший вклад в погрешность внес нагрев воздуха (5\%, согласно расчетам в теоретической части).
