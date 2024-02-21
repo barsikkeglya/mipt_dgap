@@ -2,7 +2,6 @@
 #include <chrono>
 #include <random>
 #include <ctime>
-#include <experimental/random>
 
 /*
 search functions must have same signature.
@@ -43,17 +42,24 @@ bool smart_sum_search(int a[], int size, int needed){
 
 }
 
-void fill(int a[]){
-    //fills the array with positive integers. guaranteed to be (strictly) ascending.
-    unsigned seed = time(NULL);
-    std::default_random_engine rng(seed);
-    std::uniform_int_distribution<unsigned> distribution(2,1000);
-    a[0]=distribution(rng);
-    for (int i = 1; i < maxlen; i++){
-        std::uniform_int_distribution<unsigned> distribution(1,100);
-        a[i]=a[i-1]+distribution(rng);
+void fill(int a[], int maxv, bool ascending){
+    //fills the array with positive integers. if ascenting == true, array valueas are guarenteed to be ascending, opposite otherwise.
+    int seed = std::time(nullptr);
+    int random_value = std::rand();
+    a[0]=random_value % maxv;
+    if (ascending){
+        for (int i = 1; i < maxlen; i++){
+            std::srand(a[i-1]);
+            int random_value = std::rand();
+            a[i]=a[i-1]+(random_value % maxv);
+        }
+    } else {
+        for (int i = 1; i < maxlen; i++){
+            std::srand(a[i-1]); // use current time as seed for random generator
+            int random_value = std::rand();
+            a[i] = random_value % maxv;
+        }
     }
-}
 
 int generate_needed(int start, int end, bool average){
     //generates needed value, bool average is flag to create -1 value that is guaranteed not to be in the array
@@ -105,7 +111,7 @@ int main(){
     int sample_size = 1000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = false;
-    fill(a); //fills array with random integers (sorted ascending)
+    fill(a,10,true); //fills array with random integers (sorted ascending)
     //print_arr(a); //prints the array, debug purposes
     std::cout << "done fill\n"; //debug line, gives info about end of fill (and print_arr function)
 

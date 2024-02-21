@@ -6,6 +6,7 @@ enable_testing()
 
 add_executable(search_asymptotic search.cpp)
 add_executable(sum_asymptotic sum.cpp)
+add_executable(strategy_asymptotic strategy.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
