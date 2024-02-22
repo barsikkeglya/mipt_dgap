@@ -104,14 +104,14 @@ void run_auto(bool (*search)(int a[], int size, int needed), int runs, int defau
 
 int main(){
     int default_size = 100; //start array length
-    int sample_size = 10000; //amount of runs per one array length
+    int sample_size = 500000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = true;
     fill(a); //fills array with random integers (sorted ascending)
     //print_arr(a); //prints the array, debug purposes
     std::cout << "done fill\n"; //debug line, gives info about end of fill (and print_arr function)
 
-    run_auto(linear_search, runs, default_size, sample_size, average); //end of run output
+    run_auto(binary_search, runs, default_size, sample_size, average); //end of run output
 
     return 0;
 }
