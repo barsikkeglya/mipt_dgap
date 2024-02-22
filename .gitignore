@@ -4,14 +4,3 @@
 *.fls
 *.log
 *.gz
-
-.vscode/c_cpp_properties.json
-.vscode/c_cpp_proprties.json
-.vscode/launch.json
-.vscode/settings.json
-2_semester/.vscode/c_cpp_properties.json
-2_semester/.vscode/launch.json
-2_semester/.vscode/settings.json
-2_semester/.vscode/tasks.json
-.vscode
-2_semester/.vscode
