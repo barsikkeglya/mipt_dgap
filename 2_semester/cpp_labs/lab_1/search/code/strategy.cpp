@@ -158,13 +158,13 @@ bool linear_search_default(int a[], int size, int needed){
 
 int main(){
     int default_size = 100; //start array length
-    int sample_size = 10000; //amount of runs per one array length
+    int sample_size = 5000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = true;
     bool binomial = true;
     fill(a,MAXIMUM_VALUE,true,maxlen );
     print_arr(a,100);
-    run_auto(linear_search_A, runs, default_size, sample_size, average, binomial); //end of run output
+    run_auto(linear_search_default, runs, default_size, sample_size, average, binomial); //end of run output
     //print_arr(check,100);
     //print_arr(a,100);
     //print_arr(count,100);
