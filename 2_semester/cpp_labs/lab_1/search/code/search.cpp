@@ -2,15 +2,18 @@
 #include <chrono>
 #include <random>
 #include <ctime>
-#include <experimental/random>
+#include <cstdlib>
+#define maxlength 1000000
 
-/*
-search functions must have same signature.
-*/
+static int a[maxlength];
+static int count[maxlength];
 
-const int maxlen=1000000; //maximum array length constant
+const int maxlen = maxlength;
 
-static int a[maxlen]; //static array
+std::default_random_engine generator;
+
+std::random_device rd; // obtain a random number from hardware
+std::mt19937 gen(rd()); // seed the generator
 
 
 bool linear_search(int a[], int size, int needed){
@@ -61,10 +64,10 @@ void fill(int a[]){
 
 int generate_needed(int start, int end, bool average){
     //generates needed value, bool average is flag to create -1 value that is guaranteed not to be in the array
-    int random_number = std::experimental::randint(start,end);
+    std::uniform_int_distribution<> distr(start, end);
     if (not average)
-        return a[random_number]-1;
-    return a[random_number];
+        return a[distr(gen)]-1;
+    return a[distr(gen)];
 }
 
 void print_arr(int a[]){
@@ -104,7 +107,7 @@ void run_auto(bool (*search)(int a[], int size, int needed), int runs, int defau
 
 int main(){
     int default_size = 100; //start array length
-    int sample_size = 500000; //amount of runs per one array length
+    int sample_size = 50000; //amount of runs per one array length
     int runs = 2; // amount of runs to be done (first one may have bad results due to OS task handler)
     bool average = true;
     fill(a); //fills array with random integers (sorted ascending)

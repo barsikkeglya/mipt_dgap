@@ -2,14 +2,24 @@
 #include <chrono>
 #include <random>
 #include <ctime>
+#include <cstdlib>
+#define maxlength 1000000
 
 /*
 search functions must have same signature.
 */
 
-const int maxlen=50000; //maximum array length constant
+static int a[maxlength];
+static int count[maxlength];
 
-static int a[maxlen]; //static array
+std::default_random_engine generator;
+
+std::random_device rd; // obtain a random number from hardware
+std::mt19937 gen(rd()); // seed the generator
+
+//const int MAXIMUM_VALUE = 100000;
+
+const int maxlen = maxlength;
 
 
 bool linear_sum_search(int a[], int size, int needed){
@@ -60,14 +70,14 @@ void fill(int a[], int maxv, bool ascending){
             a[i] = random_value % maxv;
         }
     }
+}
 
 int generate_needed(int start, int end, bool average){
     //generates needed value, bool average is flag to create -1 value that is guaranteed not to be in the array
-    int random_number_1 = std::experimental::randint(start,end);
-    int random_number_2 = std::experimental::randint(start,end);
+    std::uniform_int_distribution<> distr(start, end);
     if (not average)
         return -1;
-    return a[random_number_1]+a[random_number_2];
+    return a[distr(gen)]+a[distr(gen)];
 }
 
 void print_arr(int a[]){
@@ -115,7 +125,7 @@ int main(){
     //print_arr(a); //prints the array, debug purposes
     std::cout << "done fill\n"; //debug line, gives info about end of fill (and print_arr function)
 
-    run_auto(linear_sum_search, runs, default_size, sample_size, average); //end of run output
+    run_auto(smart_sum_search, runs, default_size, sample_size, average); //end of run output
 
 
     return 0;
