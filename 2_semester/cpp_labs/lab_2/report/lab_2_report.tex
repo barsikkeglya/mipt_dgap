@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{report}
+%general packages
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+%fancy header + geometry
+\usepackage{fancyhdr}
+\usepackage[a4paper,includehead,nomarginpar,left=15mm,right=15mm,top=15mm,headheight=10mm,bottom=20mm]{geometry}
+
+%pgfplots
+\usepackage{pgfplots}
+\usepackage{pgfkeys}
+\pgfplotsset{compat=1.12}
+\usepackage{mathrsfs}
+
+%multi column text
+\usepackage{blindtext}
+\usepackage{multicol}
+
+%tikz (draw)
+\usepackage{tikz}
+\usepackage{pstricks-add}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+\usetikzlibrary{arrows}
+\usepackage{float}
+
+%parskip settings
+\parindent=0ex
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+%fancy notation for sets
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+%sgn function
+\DeclareMathOperator{\sgn}{sgn}
+
+% intersection and union symbols
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand{\celsius}{$\ ^\circ C$}
+
+%environments
+
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{\baselineskip}{0pt}
+\titlespacing*{\paragraph}
+{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\paragraph}
+{0pt}{0.1\baselineskip}{\baselineskip}
+
+\begin{document}
+	\input{titlepage.tex}
+	\newpage
+	%\pagenumbering{arabic}
+    \pagestyle{fancy}
+
+    \fancyhead{}
+    \fancyfoot{}
+    \fancyhead[L]{\rightmark}
+    \fancyhead[R]{\thepage}
+    \fancyfoot[R]{Лабораторная работа 2 --- методы сортировки}
+
+    \begin{multicols}{2}
+        \section{Задание 1. Шейкерная сортировка.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[name=plot1,
+                    title={Shaker sort},
+                    xlabel={Array length},
+                    ylabel={t, ms},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[] coordinates {(100,0)(1100,98)(2100,376)(3100,760)(4100,1340)(5100,2051)(6100,3038)(7100,4061)(8100,5282)(9100,6789)};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+    \end{multicols}
+
+
+\end{document}
