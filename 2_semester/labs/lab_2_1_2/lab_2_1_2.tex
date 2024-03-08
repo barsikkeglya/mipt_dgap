@@ -1,4 +1,5 @@
 \documentclass[a4paper,12pt]{report}
+%general packages
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
@@ -10,56 +11,86 @@
 \usepackage{gensymb}
 \usepackage{cancel} %cancel symbol
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+
+%fancy header + geometry
+\usepackage{fancyhdr}
+\usepackage[a4paper,includehead,nomarginpar,left=15mm,right=15mm,top=15mm,headheight=10mm,bottom=20mm]{geometry}
+
+%pgfplots
 \usepackage{pgfplots}
 \usepackage{pgfkeys}
-%\usepackage[margin=3cm]{geometry}
 \pgfplotsset{compat=1.12}
 \usepackage{mathrsfs}
 
-\usepackage[pagestyles]{titlesec}
-\titleformat{\chapter}[display]{\normalfont\huge\bfseries\centering}   {\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing{\chapter}{0pt}{-48pt}{1cm}
+%multi column text
+\usepackage{blindtext}
+\usepackage{multicol}
 
 %tikz (draw)
-
 \usepackage{tikz}
 \usepackage{pstricks-add}
-%tikz libraries
-
 \usetikzlibrary{intersections}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{calc,angles,positioning}
 \usetikzlibrary{arrows}
 \usepackage{float}
 
+%parskip settings
 \parindent=0ex
 \setlength{\parskip}{\baselineskip}%
 \setlength{\parindent}{0pt}%
 
-\graphicspath{ {C:/Users/George/Documents/MIPT_TEX/} }
-
+%fancy notation for sets
 \newcommand{\R}{{\mathbb R}}
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\fancy}[1]{{\mathbb{#1}}}
+%sgn function
 \DeclareMathOperator{\sgn}{sgn}
-\newtheorem{problem}{Задача}[]
-\newenvironment{sol}{\paragraph{Решение}}{}
-\renewcommand\thesection{\arabic{section}}
+
+% intersection and union symbols
 \newcommand{\uni}{\cup}
 \newcommand{\inter}{\cap}
 
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand{\celsius}{$\ ^\circ C$}
+
+%environments
+
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{\baselineskip}{0pt}
+\titlespacing*{\paragraph}
+{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\paragraph}
+{0pt}{0.1\baselineskip}{\baselineskip}
+
 \begin{document}
-	\input{titlepage.tex}
-	\newpage
-	\pagenumbering{arabic}
+    \input{titlepage.tex}
+    \newpage
+    %\pagenumbering{arabic}
+    \pagestyle{fancy}
+
+    \fancyhead{}
+    \fancyfoot{}
+    \fancyhead[L]{\rightmark}
+    \fancyhead[R]{\thepage}
+    \fancyfoot[R]{Работа 2.1.2 --- Показатель адиабаты}
+
     
     \subsection*{Аннотация}
         \paragraph*{Цель работы:} определение отношения $C_p/C_V$ для воздуха или углекислого газа по измерению давления в стеклянном сосуде. Измерения производятся сначала для адиабатического расширения гааз, а затем после нагревания сосуда и газа до комнатной температуры.
         \paragraph*{В работе используются:} стеклянный сосуд; U-образный жидкостный манометр; резиновая группа; газгольдер с углекислым газом.
+    
+    \begin{multicols}{2}    
     \section{Основные теоретические сведения}
     \subsection*{Экспериментальная установка}
         \begin{figure}[H]
-            \includegraphics*[width=0.75\textwidth]{ustanovka.png}
+            \includegraphics*[width=0.9\columnwidth]{ustanovka.png}
             \centering
             \caption{Установка для определения отношения $C_p/C_V$}
         \end{figure}
@@ -146,9 +177,9 @@
             p_1=p_0+\rho gh_1, \qquad p_3=p_0+\rho gh_3
         \end{equation*}
         где $\rho$ -- плотность жидкости, $h_1$ -- высота столба в состоянии <<1>>, $h_3$ -- в состоянии <<3>>. Далее преобразуем уравнение $\gamma$ с учетом этих соотношений:
-        \begin{equation*}
-            \gamma=\frac{\ln([p_0+\rho gh_1]/p_0)}{\ln([p_0+\rho gh_1]/[p_0+\rho gh_3])}=\frac{\ln(1+\rho gh_1/p_0)}{\ln (1+\rho gh_1/p_0)-\ln(1+\rho gh_3/p_0)}\\ 
-        \end{equation*}
+        \begin{gather*}
+            \gamma=\frac{\ln([p_0+\rho gh_1]/p_0)}{\ln([p_0+\rho gh_1]/[p_0+\rho gh_3])}=\\=\frac{\ln(1+\rho gh_1/p_0)}{\ln (1+\rho gh_1/p_0)-\ln(1+\rho gh_3/p_0)} 
+        \end{gather*}
         Считая, что разница между атмосферным давлением и давлением в системе сильно меньше чем само атмосферное давление, логарифмы можно разложить в ряд Тейлора. Примем следующие обозначения:
         \begin{equation*}
             \frac{\rho gh_1}{p_0}=x_1\rightarrow0, \qquad \frac{\rho g h_3}{p_0}=x_3\rightarrow 0
@@ -212,27 +243,23 @@
     Для начала необходимо убедиться, что внутри сосуда находится углекислый газ. Для этого мы провели 10-15 <<тестовых>> попыток эксперимента: наполняли сосуд дополнительным газом, не дожидаясь установления равновесия, открывали клапан. Таким образом часть углекислого газа в смеси можно повысить.
 
     Было проведено 10 опытов, в каждом из которых была получена зависимость $h(t)$ и значение показателя адиабаты $\gamma$.
+    \end{multicols}
 
-    \section*{Обработка полученных результатов}
-
-    Сначала рассмотрим результаты измерения зависимости $h(t)$. В процессе выполнения стало понятно, что время установления равновесия температуры находится в районе 2-3 минут.
+    \section{Обработка полученных результатов}
 
     \begin{figure}[H]
         \centering
         \includegraphics*[width=1\linewidth]{h(t).png}
         \caption{Результаты измерений зависимости $h(t)$}
     \end{figure}    
+    \begin{multicols}{2}
+    Сначала рассмотрим результаты измерения зависимости $h(t)$. В процессе выполнения стало понятно, что время установления равновесия температуры находится в районе 2-3 минут.
 
     Некоторые эксперименты не совсем сходятся с основной группой. Например <<1>> и <<2>> (особенно <<1>>) оказались дальше всего. Это можно объяснить тем, что в сосуде еще оставалась достаточно большая часть воздуха, а также тем, что измерение зависимости $h(t)$ достаточно сложно, поэтому первые опыты оказались не самыми лучшими.
     
     Хорошо видно, что зависимости (особенно последние 5) имеют некоторую асимптоту. Можно считать, что после около 180-240с. температура в системе установилась до комнатной, так как последующее изменение давления много меньше малой разницы относительно $p_0$.
 
     Далее, после открытия крана на примерно 1с. и установления равновесия были получены значения для показателя адиабаты $\gamma$.
-
-    \begin{figure}
-        
-        
-    \end{figure}
 
     Систематическую погрешность измерения показателя адиабаты будем рассчитывать по формуле:
 
@@ -299,7 +326,7 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[scale=1.3]
+        \begin{tikzpicture}[scale=1]
             \begin{axis}[
                 ymajorgrids=true,
                 xmajorgrids=true,
@@ -332,12 +359,15 @@
         \caption{Экстраполяция $\Delta t \rightarrow 0$}
     \end{figure}
     Видно, что при более маленьком времени $\Delta t$ наблюдается более высокий показатель адиабаты $\gamma$. При апроксимации МНК получаем прямую $\gamma=k\Delta t + b$, где $k\approx-0.21$, $b\approx 1.41$. Поэтому при $\Delta t \rightarrow 0 \ \gamma\rightarrow 1.41$. Этот результат выше табличного $\gamma=1.30$, так как за малое время $\Delta t \rightarrow 0$ давление не успевает сравняться с атмосферным. 
-    \section*{Обсуждение полученных результатов и выводы}
+    \end{multicols}
+
+    \begin{multicols}{2}
+    \section{Обсуждение полученных результатов и выводы}
     
     В результате работы мы успешно измерили показатель адиабаты для углекислого газа при комнатной температуре. Результат получен с погрешностью $\approx 6.9\%$, что достаточно много. Однако больший вклад в погрешность внес нагрев воздуха (5\%, согласно расчетам в теоретической части).
 
     Погрешность оценена корректно, отклонение от табличных значений составила немного более 1.5\%. Возможно, оценка прогрева воздуха завышена и вклад в погрешность на самом деле ниже.
 
     В ходе работы возникли трудности оценки времени открытия клапана. Это связано в том числе и с тем, что воздух начинает проходить даже когда клапан еще не находится в открытом положении. Это усложняет точное определение времени открытия клапана, однако мы пытались его уменьшать с каждым опытом. Это сказалось на точности результатов: последние несколько опытов мы стабильно получали значения, близкие к табличным.
-
+    \end{multicols}
 \end{document}
