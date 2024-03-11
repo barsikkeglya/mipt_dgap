@@ -8,7 +8,9 @@ using namespace std;
 
 #define maxlength 10000
 #define default_size 100
-#define maxvalue 10000;
+#define maxvalue 10000
+
+const bool supress = true;
 
 static int etalon[maxlength];
 static int a[maxlength];
@@ -84,7 +86,7 @@ unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end
     auto end = std::chrono::steady_clock::now();
     auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end-begin);
     fill(a,maxlen,max_value);
-    if (errors != 0)
+    if (errors != 0 and !supress)
         std::cout << "\n" << "errors at " << end_idx - begin_idx + 1 << ", amount: " << errors << "\n";
     if (changes)
         return (rolling_chg /= sample_size);
@@ -168,6 +170,16 @@ int full_backward(int a[], int begin_idx, int end_idx){
     return (changes);
 }
 
+/*int step_full_forward(int a[], int begin_idx, int end_idx, int step){
+    for (int i = begin_idx; i + step < end_idx; i = i + step){
+        for (int j = 0; j < i; j = j+step)
+            if(a[j] > a[j+step]){
+                swap(&a[j],&a[j+step]);
+                changes++;
+            }
+    }
+}*/
+
 int comb_sort(int a[], int begin_idx, int end_idx){
     //comb sort function
     int size = end_idx - begin_idx + 1;
@@ -192,7 +204,7 @@ int comb_sort(int a[], int begin_idx, int end_idx){
 int main(){
 
     int amount_of_runs = 1;
-    int sample_size = 100;
+    int sample_size = 1000;
     bool changes = false;
 
     fill(a,maxlen,max_value);
