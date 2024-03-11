@@ -69,6 +69,8 @@
 \titlespacing*{\paragraph}
 {0pt}{0.1\baselineskip}{\baselineskip}
 
+\setcounter{secnumdepth}{0}
+
 \begin{document}
 	\input{titlepage.tex}
 	\newpage
@@ -81,7 +83,7 @@
     \fancyhead[R]{\thepage}
     \fancyfoot[R]{Лабораторная работа 2 --- методы сортировки}
 
-    \begin{multicols}{2}
+    %\begin{multicols}{2}
         \section{Задание 1. Шейкерная сортировка.}
         \begin{figure}[H]
             \centering
@@ -94,11 +96,102 @@
                     ymajorgrids=true,
                     xmajorgrids=true,
                     grid style=dashed,]
-                    \addplot[] coordinates {(100,0)(1100,98)(2100,376)(3100,760)(4100,1340)(5100,2051)(6100,3038)(7100,4061)(8100,5282)(9100,6789)};
+                    \addplot[] coordinates {(100,32)(1100,204)(2100,656)(3100,1383)(4100,2428)(5100,3667)(6100,5266)(7100,7261)(8100,9383)(9100,12027)
+
+                    };
+                    \addlegendentry{Shaker sort}
+                    \addplot[color=red] coordinates {(100,32)(1100,165)(2100,504)(3100,1063)(4100,1806)(5100,2809)(6100,4001)(7100,5334)(8100,6928)(9100,8777)
+
+
+                    };
+                    \addlegendentry{Forward}
+                    \addplot[color=blue] coordinates {(100,34)(1100,161)(2100,500)(3100,1038)(4100,1728)(5100,2630)(6100,3762)(7100,5047)(8100,6606)(9100,8357)
+
+                    };
+                    \addlegendentry{Backward}
                 \end{axis}
             \end{tikzpicture}
         \end{figure}
-    \end{multicols}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[name=plot1,
+                    title={Shaker sort},
+                    xlabel={Array length},
+                    ylabel={Changes},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[] coordinates {(100,2537)(1100,303826)(2100,1103073)(3100,2405447)(4100,4201453)(5100,6508088)(6100,9314614)(7100,12572759)(8100,16395379)(9100,20708826)
+
+                    };
+                    \addlegendentry{Shaker sort}
+                    \addplot[color=red] coordinates {(100,2537)(1100,303826)(2100,1103073)(3100,2405447)(4100,4201453)(5100,6508088)(6100,9314614)(7100,12572759)(8100,16395379)(9100,20708826)
+
+
+                    };
+                    \addlegendentry{Forward}
+                    \addplot[color=blue] coordinates {(100,2537)(1100,303826)(2100,1103073)(3100,2405447)(4100,4201453)(5100,6508088)(6100,9314614)(7100,12572759)(8100,16395379)(9100,20708826)
+
+                    };
+                    \addlegendentry{Backward}
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1.5]
+                \begin{axis}[
+                    axis y line*=left,
+                    xlabel=Array length,
+                    ylabel={t, ms},
+                  ]
+                  \addplot[smooth,mark=x,black]
+                    coordinates{
+                        (100,31)(1100,112)(2100,311)(3100,633)(4100,1106)(5100,1649)(6100,2341)(7100,3144)(8100,4121)(9100,5177)
+                  }; \label{plot_one}
+                  \end{axis}
+
+                \begin{axis}[
+                    legend pos = north west,
+                    axis y line*=right,
+                    axis x line=none,
+                    ymax=100,
+                    ytick={0,20,...,100},
+                    ylabel=\% errors,
+                  ]
+                  \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Comb@2, bubble}
+                  \addplot[smooth,color=red]
+                    coordinates{
+                      (100,1)(1100,0)(9100,0)
+                  }; \addlegendentry{Error \%}
+                  \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+        
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=1.5]
+                \begin{axis}[name=plot1,
+                    title={Comb sort},
+                    xlabel={Array length},
+                    ylabel={Changes},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[] coordinates {
+                        (100,246)(10100,58152)(20100,122563)(30100,188128)(40100,252288)(50100,319211)(60100,382770)(70100,450930)(80100,511636)(90100,580048)
+
+                        };
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+    %\end{multicols}
 
 
 \end{document}

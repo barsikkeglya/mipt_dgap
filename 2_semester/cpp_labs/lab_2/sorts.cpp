@@ -3,11 +3,14 @@
 #include <random>
 #include <ctime>
 #include <cstdlib>
+#include <algorithm>
+using namespace std;
 
 #define maxlength 10000
 #define default_size 100
 #define maxvalue 10000;
 
+static int etalon[maxlength];
 static int a[maxlength];
 static int chg[maxlength];
 
@@ -23,6 +26,11 @@ std::default_random_engine generator;
 std::random_device rd; // obtain a random number from hardware
 std::mt19937 gen(rd()); // seed the generator
 
+void shuffle_array(int a[], int begin_idx, int end_idx){
+    //shuffles array from begin_idx to end_idx
+    shuffle(&a[begin_idx],&a[end_idx],rd);
+}
+
 void swap(int *x, int *y){
     //swaps two array entries
     int buffer = *x;
@@ -30,9 +38,15 @@ void swap(int *x, int *y){
     *y = buffer;
 }
 
-int generate_needed(){
-
+bool check_sorted(int a[], int begin_idx, int end_idx){
+    // checks if array is sorted from begin_idx to end_idx
+    for (int i = begin_idx; i < end_idx; i++){
+        if (a[i+1] < a[i])
+            return false;
+    }
+    return true;
 }
+
 
 void fill(int a[], int size, int max_value){
     //fills array with uniform distributed between 0 and max_value integers.
@@ -43,114 +57,150 @@ void fill(int a[], int size, int max_value){
 }
 
 void print_arr(int a[],int size){
+    //prints first SIZE elements of an array in form of (x,y), where x === index, y === value
     for (int i = 0; i < size; i++)
         std::cout << "(" << i << "," << a[i] << ")";
     std::cout << "\n\n";
 }
 
-unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int sample_size){
+unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int sample_size, bool changes){
     /*
-    sample size - amount of runs per array length
-    check size  - array length
-    bool average - if true search is given number that is guaranteed to be in the array, if false -- search is given -1 as needed value, which is not in the array 
-    in short: with true/false checks average/worst time complexity
+    sort --- current sort function
+    begin_idx --- begin index
+    end_idx --- end index
+    sample_size --- sample size
+    changes --- function returns amount of changes if true
     */
+    int errors = 0;
+    int rolling_chg = 0;
     auto begin = std::chrono::steady_clock::now();
     for (int iteration = 0; iteration < sample_size; iteration++){
-        auto curr_chg = sort(a,begin_idx,end_idx);
+        shuffle_array(a,0,maxlen-1);
+        int curr_chg = sort(a,begin_idx,end_idx);
+        rolling_chg += curr_chg;
+        if (!check_sorted(a,0,end_idx-1))
+            errors++;
     }
     auto end = std::chrono::steady_clock::now();
     auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end-begin);
     fill(a,maxlen,max_value);
+    if (errors != 0)
+        std::cout << "\n" << "errors at " << end_idx - begin_idx + 1 << ", amount: " << errors << "\n";
+    if (changes)
+        return (rolling_chg /= sample_size);
     return time_span.count();
 }
 
-void run_auto(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int runs, int sample_size){
+void run_auto(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int runs, int sample_size, bool changes){
+    /*
+    auto run function, does RUNS amount of runs. outputs to console times (or changes depending on CHANGES boolean) in form of (x,y), where x === size of array, y === time (or changes)
+    */
     for (int run = 0; run < runs; run++){
         std::cout << "run no " << run << "\n\n";
         for (int n = def_s; n <= maxlen;  n += 1000){
             std::cout << "(" << n << ","
-            << timing(sort, 0, n-1, sample_size) << ")";
+            << timing(sort, 0, n-1, sample_size, changes) << ")";
         }
         std::cout << "\n\n\n\n";
     }
 }
 
-void forward_step(int a[],int begin_idx, int end_idx){
+int forward_step(int a[],int begin_idx, int end_idx){
     int m = end_idx - begin_idx + 1;
     int i = begin_idx;
-    for(int j = i+1; j < m; j++){
-        if(a[j] < a[j-1])
-            swap(&a[j],&a[j-1]);
+    int changes = 0;
+    for(int j = 0; j < m-1; j++){
+        if(a[j] > a[j+1]){
+            swap(&a[j],&a[j+1]);
+            changes++;
+        }
     }
+    return changes;
 }
 
-void backward_step(int a[],int begin_idx, int end_idx){
+int backward_step(int a[],int begin_idx, int end_idx){
     int m = end_idx - begin_idx + 1;
     int i = begin_idx;
-    for (int k = m-1; k > i; k--){
-            if(a[k] < a[k-1])
-                swap(&a[k],&a[k-1]);
+    int changes = 0;
+    for (int k = m-1; k > -1; k--){
+        if(a[k] > a[k+1]){
+            swap(&a[k],&a[k+1]);
+            changes++;
+        }
     }
+    return changes;
 }
 
 int shaker_sort(int a[], int begin_idx, int end_idx){
+    //shaker sort function
     int m = end_idx - begin_idx + 1;
+    int changes = 0;
     for (int i = 0; i < m;){
-        forward_step(a,i,i+m-1);
+        auto x = forward_step(a,i,i+m-1);
         m--;
-        backward_step(a,begin_idx,end_idx);
+        auto y = backward_step(a,begin_idx,end_idx);
         i++;
+        changes += x;
+        changes += y;
     }
-    return 0;
+    return changes;
 }
 
-/*bool step_check(int a[], int step, int begin_idx, int end_idx){
-    int cts = 0;
-    for (int i = begin_idx; i < (end_idx-step); i += step){
-        if (a[i+step] < a[i])
-            swap(&a[i+step],&a[i]);
-            cts++;
-    }
-    if (cts > 0)
-        return true;
-    else
-        return false;
-}*/
-
-int comb_sort(int a[], int begin_idx, int end_idx){ 
+int full_forward(int a[], int begin_idx, int end_idx){
+    //full forward bubble sort, uses forward step
     int size = end_idx - begin_idx + 1;
-    int count = 0; //число перестановок
-    int step = size - 1; //шаг
-    bool flag = true; //swapped flag
-    
-    while ((flag) || (step > 1)){
-        flag = false;
-        for (int i = 0; i + step < size; i++){
-            if (a[i] > a[i+step]){
-                swap(&a[i],&a[i+step]);
-                flag = true;
-                count++;
-            }
-        }
-        if (step != 1){
-            step /= 2;
-        }
+    int changes = 0;
+    for (int i = 0; i < size - 1; i++){
+        auto x = forward_step(a,i,size);
+        changes += x;
     }
-    return count;
+    return (changes);
+}
+
+int full_backward(int a[], int begin_idx, int end_idx){
+    //full backward bubble sort, uses backward step.
+    int size = end_idx - begin_idx + 1;
+    int changes = 0;
+    for (int i = size-1; i > 0; i--){
+        auto x = backward_step(a,i,size);
+        changes += x;
+    }
+    return (changes);
+}
+
+int comb_sort(int a[], int begin_idx, int end_idx){
+    //comb sort function
+    int size = end_idx - begin_idx + 1;
+    int step = end_idx - begin_idx;
+    double shrink_factor = 1.25;
+    int changes = 0;
+    
+	while (step >= 1){   
+		for (int i = 0; i + step < size; i++){
+			if (a[i] > a[i + step])
+			{
+                swap(&a[i],&a[i+step]);
+                changes++;
+			}
+		}
+		step /= shrink_factor;
+	}
+    //auto x = full_forward(a,begin_idx,end_idx);
+    return changes;
 }
 
 int main(){
 
     int amount_of_runs = 1;
     int sample_size = 100;
+    bool changes = false;
 
     fill(a,maxlen,max_value);
-    print_arr(a,100);
-    std::cout << "\n\n" << "done fill" << "\n\n";
-    //run_auto(comb_sort,0,maxlen,amount_of_runs,sample_size);
-    comb_sort(a,0,99);
-    std::cout << "\n\n";
-    print_arr(a,100);
+    run_auto(comb_sort,0,maxlen,amount_of_runs,sample_size, changes);
+    //print_arr(a,100);
+    //comb_sort(a,0,1000);
+    //print_arr(a,100);
+    
+    //std::cout << check_sorted(a,0,1000);
     return 0;
 }
