@@ -11,6 +11,7 @@
 \usepackage{gensymb}
 \usepackage{cancel} %cancel symbol
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage[dvipsnames]{xcolor}
 
 %fancy header + geometry
 \usepackage{fancyhdr}
@@ -87,9 +88,9 @@
         \section{Задание 1. Шейкерная сортировка.}
         \begin{figure}[H]
             \centering
-            \begin{tikzpicture}
+            \begin{tikzpicture}[scale=1.3]
                 \begin{axis}[name=plot1,
-                    title={Shaker sort},
+                    title={Shaker sort time complexity},
                     xlabel={Array length},
                     ylabel={t, ms},
                     legend pos=north west,
@@ -115,9 +116,9 @@
 
         \begin{figure}[H]
             \centering
-            \begin{tikzpicture}
+            \begin{tikzpicture}[scale=1.3]
                 \begin{axis}[name=plot1,
-                    title={Shaker sort},
+                    title={Shaker sort changes(N)},
                     xlabel={Array length},
                     ylabel={Changes},
                     legend pos=north west,
@@ -141,57 +142,258 @@
             \end{tikzpicture}
         \end{figure}
 
+        \newpage
+
+        \section{Задание 2. Сортировка <<расческой>>.}
 
         \begin{figure}[H]
             \centering
-            \begin{tikzpicture}[scale=1.5]
+            \begin{tikzpicture}[scale=1]
                 \begin{axis}[
+                    title = {Comb sort time complexity},
                     axis y line*=left,
                     xlabel=Array length,
                     ylabel={t, ms},
                   ]
-                  \addplot[smooth,mark=x,black]
+                  \addplot[smooth,Aquamarine]
+                  coordinates{
+                    (100,311)(1100,332)(2100,380)(3100,428)(4100,485)(5100,534)(6100,580)(7100,637)(8100,673)(9100,763)
+
+                  }; \label{plot_zero}
+                  \addplot[smooth,black]
                     coordinates{
-                        (100,599)(1100,696)(2100,863)(3100,1198)(4100,1336)(5100,1248)(6100,1071)(7100,1185)(8100,1362)(9100,1497)
+                        (100,325)(1100,390)(2100,466)(3100,556)(4100,645)(5100,731)(6100,824)(7100,913)(8100,997)(9100,1097)
                         }; \label{plot_one}
+                    \addplot[smooth,blue]
+                    coordinates{
+                        (100,320)(1100,378)(2100,455)(3100,540)(4100,629)(5100,721)(6100,816)(7100,912)(8100,998)(9100,1103)
+
+                    }; \label{plot_two}
+                    \addplot[smooth,red]
+                    coordinates{
+                        (100,320)(1100,384)(2100,468)(3100,565)(4100,684)(5100,764)(6100,866)(7100,991)(8100,1116)(9100,1191)
+
+                    }; \label{plot_three}
                   \end{axis}
 
                 \begin{axis}[
-                    legend pos = north west,
+                    legend pos = south east,
+                    legend style={at={(1.25,1)},anchor=north west, nodes={scale=.75, transform shape}},
                     axis y line*=right,
                     axis x line=none,
-                    ymax=100,
+                    ymax=120,
                     ytick={0,20,...,100},
                     ylabel=\% errors,
                   ]
-                  \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Comb@2, bubble}
-                  \addplot[smooth,color=red]
+                  \addlegendimage{/pgfplots/refstyle=plot_zero}\addlegendentry{Comb@2.00, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Comb@1.25, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_two}\addlegendentry{Comb@1.20, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_three}\addlegendentry{Comb@1.15, no bubble}
+                  \addplot[smooth,dashed,Aquamarine]
+                  coordinates{
+                    (100,100)(1100,100)(2100,100)(3100,100)(4100,100)(5100,100)(6100,100)(7100,100)(8100,100)(9100,100)
+
+                  }; \addlegendentry{Error \% @2.00}
+                  \addplot[smooth,dashed,black]
                     coordinates{
-                      (100,1)(1100,0)(9100,0)
-                  }; \addlegendentry{Error \%}
+                        (100,2)(1100,94)(2100,99)(3100,69)(4100,100)(5100,100)(6100,94)(7100,86)(8100,100)(9100,96)
+                        }; \addlegendentry{Error \% @1.25}
+                    \addplot[smooth,dashed,blue] 
+                    coordinates{
+                        (100,0)(1100,26)(2100,15)(3100,28)(4100,0)(5100,28)(6100,27)(7100,3)(8100,78)(9100,54)
+
+                    }; \addlegendentry{Error \% @1.20}
+                    \addplot[smooth,dashed,red]
+                    coordinates{
+                        (100,0)(1100,0)(2100,0)(3100,0)(4100,0)(5100,0)(6100,0)(7100,0)(8100,0)(9100,0)
+
+                    }; \addlegendentry{Error \% @1.15}
                   \end{axis}
             \end{tikzpicture}
         \end{figure}
         
         \begin{figure}[H]
             \centering
-            \begin{tikzpicture}[scale=1.5]
-                \begin{axis}[name=plot1,
-                    title={Comb sort},
-                    xlabel={Array length},
+            \begin{tikzpicture}[scale=1]
+                \begin{axis}[
+                    title = {Comb sort changes(N)},
+                    axis y line*=left,
+                    xlabel=Array length,
                     ylabel={Changes},
-                    legend pos=north west,
-                    ymajorgrids=true,
-                    xmajorgrids=true,
-                    grid style=dashed,]
-                    \addplot[] coordinates {
-                        (100,246)(10100,58152)(20100,122563)(30100,188128)(40100,252288)(50100,319211)(60100,382770)(70100,450930)(80100,511636)(90100,580048)
+                  ]
+                  \addplot[smooth,Aquamarine]
+                  coordinates{
+                    (100,267)(1100,6386)(2100,14015)(3100,20652)(4100,30950)(5100,39339)(6100,47343)(7100,54812)(8100,62946)(9100,78308)
 
-                        };
-                \end{axis}
+                  }; \label{plot_zero}
+                  \addplot[smooth,black]
+                    coordinates{
+                        (100,247)(1100,4706)(2100,10019)(3100,15726)(4100,21423)(5100,27427)(6100,33969)(7100,39778)(8100,45626)(9100,52310)
+                        }; \label{plot_one}
+                    \addplot[smooth,blue]
+                    coordinates{
+                        (100,245)(1100,4595)(2100,9716)(3100,15186)(4100,20815)(5100,26510)(6100,32661)(7100,38260)(8100,44114)(9100,50096)
+
+                    }; \label{plot_two}
+                    \addplot[smooth,red]
+                    coordinates{
+                        (100,248)(1100,4606)(2100,9713)(3100,15091)(4100,20658)(5100,26372)(6100,32010)(7100,37834)(8100,43718)(9100,49592)
+
+                    }; \label{plot_three}
+                  \end{axis}
+
+                \begin{axis}[
+                    legend pos = south east,
+                    legend style={at={(1.25,1)},anchor=north west, nodes={scale=.75, transform shape}},
+                    axis y line*=right,
+                    axis x line=none,
+                    ymax=120,
+                    ytick={0,20,...,100},
+                    ylabel=\% errors,
+                  ]
+                  \addlegendimage{/pgfplots/refstyle=plot_zero}\addlegendentry{Comb@2.00, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Comb@1.25, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_two}\addlegendentry{Comb@1.20, no bubble}
+                  \addlegendimage{/pgfplots/refstyle=plot_three}\addlegendentry{Comb@1.15, no bubble}
+                  \addplot[smooth,dashed,Aquamarine]
+                  coordinates{
+                    (100,100)(1100,100)(2100,100)(3100,100)(4100,100)(5100,100)(6100,100)(7100,100)(8100,100)(9100,100)
+   
+                  }; \addlegendentry{Error \% @2.00}
+                  \addplot[smooth,dashed,black]
+                    coordinates{
+                        (100,2)(1100,94)(2100,99)(3100,69)(4100,100)(5100,100)(6100,94)(7100,86)(8100,100)(9100,96)
+                        }; \addlegendentry{Error \% @1.25}
+                    \addplot[smooth,dashed,blue] 
+                    coordinates{
+                        (100,0)(1100,26)(2100,15)(3100,28)(4100,0)(5100,28)(6100,27)(7100,3)(8100,78)(9100,54)
+
+                    }; \addlegendentry{Error \% @1.20}
+                    \addplot[smooth,dashed,red]
+                    coordinates{
+                        (100,0)(1100,0)(2100,0)(3100,0)(4100,0)(5100,0)(6100,0)(7100,0)(8100,0)(9100,0)
+
+                    }; \addlegendentry{Error \% @1.15}
+                  \end{axis}
             \end{tikzpicture}
-        \end{figure}
-    %\end{multicols}
+    \end{figure}
 
+    
+
+    %\end{multicols}
+    
+    \newpage
+
+    \section{Задание 3. Сортировка Шелла.}
+    
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \begin{axis}[
+                title = {Shell sort time complexity},
+                axis y line*=left,
+                xlabel=Array length,
+                ylabel={t, ms},
+              ]
+              \addplot[smooth,black]
+                coordinates{
+                    (100,6)(5100,633)(10100,1355)(15100,2096)(20100,2928)(25100,3797)(30100,4513)(35100,5279)(40100,6177)(45100,7613)
+                    }; \label{plot_one}
+                \addplot[smooth,blue]
+                coordinates{
+                    (100,9)(5100,637)(10100,1358)(15100,2131)(20100,2997)(25100,3803)(30100,4611)(35100,5430)(40100,6306)(45100,7158)
+
+                }; \label{plot_two}
+                \addplot[smooth,red]
+                coordinates{
+                    (100,11)(5100,744)(10100,1580)(15100,2491)(20100,3469)(25100,4345)(30100,5377)(35100,6645)(40100,7309)(45100,8346)
+
+                }; \label{plot_three}
+              \end{axis}
+
+            \begin{axis}[
+                legend pos = south east,
+                legend style={at={(1.25,1)},anchor=north west, nodes={scale=.75, transform shape}},
+                axis y line*=right,
+                axis x line=none,
+                ymax=120,
+                ytick={0,20,...,100},
+                ylabel=\% errors,
+              ]
+              \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Shell A}
+              \addlegendimage{/pgfplots/refstyle=plot_two}\addlegendentry{Shell B}
+              \addlegendimage{/pgfplots/refstyle=plot_three}\addlegendentry{Shell C}
+              \addplot[smooth,dashed,black]
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+                    }; \addlegendentry{Error \% A}
+                \addplot[smooth,dashed,blue] 
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+
+                }; \addlegendentry{Error \% B}
+                \addplot[smooth,dashed,red]
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+
+                }; \addlegendentry{Error \% C}
+              \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1]
+            \begin{axis}[
+                title = {Shell sort changes(N)},
+                axis y line*=left,
+                xlabel=Array length,
+                ylabel={t, ms},
+              ]
+              \addplot[smooth,black]
+                coordinates{
+                    (100,401)(5100,57983)(10100,137012)(15100,220267)(20100,353325)(25100,529628)(30100,545401)(35100,674248)(40100,790069)(45100,1356836)
+                    }; \label{plot_one}
+                \addplot[smooth,blue]
+                coordinates{
+                    (100,338)(5100,56519)(10100,133270)(15100,220869)(20100,314209)(25100,416027)(30100,520273)(35100,630009)(40100,741146)(45100,859018)
+
+                }; \label{plot_two}
+                \addplot[smooth,red]
+                coordinates{
+                    (100,304)(5100,61785)(10100,148928)(15100,250940)(20100,359656)(25100,477994)(30100,601467)(35100,729127)(40100,863643)(45100,1001145)
+
+                }; \label{plot_three}
+              \end{axis}
+
+            \begin{axis}[
+                legend pos = south east,
+                legend style={at={(1.25,1)},anchor=north west, nodes={scale=.75, transform shape}},
+                axis y line*=right,
+                axis x line=none,
+                ymax=120,
+                ytick={0,20,...,100},
+                ylabel=\% errors,
+              ]
+              \addlegendimage{/pgfplots/refstyle=plot_one}\addlegendentry{Shell A}
+              \addlegendimage{/pgfplots/refstyle=plot_two}\addlegendentry{Shell B}
+              \addlegendimage{/pgfplots/refstyle=plot_three}\addlegendentry{Shell C}
+              \addplot[smooth,dashed,black]
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+                    }; \addlegendentry{Error \% A}
+                \addplot[smooth,dashed,blue] 
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+
+                }; \addlegendentry{Error \% B}
+                \addplot[smooth,dashed,red]
+                coordinates{
+                    (100,0)(5100,0)(10100,0)(15100,0)(20100,0)(25100,0)(30100,0)(35100,0)(40100,0)(45100,0)
+
+                }; \addlegendentry{Error \% C}
+              \end{axis}
+        \end{tikzpicture}
+    \end{figure}
 
 \end{document}

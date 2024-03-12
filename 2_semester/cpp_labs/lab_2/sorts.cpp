@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 
-#define maxlength 10000
+#define maxlength 50000
 #define default_size 100
 #define maxvalue 10000
 
@@ -65,7 +65,7 @@ void print_arr(int a[],int size){
     std::cout << "\n\n";
 }
 
-unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int sample_size, bool changes){
+unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int sample_size, bool changes, bool err){
     /*
     sort --- current sort function
     begin_idx --- begin index
@@ -77,7 +77,7 @@ unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end
     int rolling_chg = 0;
     auto begin = std::chrono::steady_clock::now();
     for (int iteration = 0; iteration < sample_size; iteration++){
-        shuffle_array(a,0,maxlen-1);
+        shuffle_array(a,0,end_idx-1);
         int curr_chg = sort(a,begin_idx,end_idx);
         rolling_chg += curr_chg;
         if (!check_sorted(a,0,end_idx-1))
@@ -85,23 +85,23 @@ unsigned timing(int (*sort)(int a[], int start, int end), int begin_idx, int end
     }
     auto end = std::chrono::steady_clock::now();
     auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end-begin);
-    fill(a,maxlen,max_value);
-    if (errors != 0 and !supress)
-        std::cout << "\n" << "errors at " << end_idx - begin_idx + 1 << ", amount: " << errors << "\n";
+    //fill(a,maxlen,max_value);
+    if (err) 
+        return floor(((float)errors/(float)sample_size)*100);
     if (changes)
         return (rolling_chg /= sample_size);
     return time_span.count();
 }
 
-void run_auto(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int runs, int sample_size, bool changes){
+void run_auto(int (*sort)(int a[], int start, int end), int begin_idx, int end_idx, int runs, int sample_size, bool changes, bool errors){
     /*
     auto run function, does RUNS amount of runs. outputs to console times (or changes depending on CHANGES boolean) in form of (x,y), where x === size of array, y === time (or changes)
     */
     for (int run = 0; run < runs; run++){
         std::cout << "run no " << run << "\n\n";
-        for (int n = def_s; n <= maxlen;  n += 1000){
+        for (int n = def_s; n <= maxlen;  n += 5000){
             std::cout << "(" << n << ","
-            << timing(sort, 0, n-1, sample_size, changes) << ")";
+            << timing(sort, 0, n-1, sample_size, changes, errors) << ")";
         }
         std::cout << "\n\n\n\n";
     }
@@ -184,7 +184,7 @@ int comb_sort(int a[], int begin_idx, int end_idx){
     //comb sort function
     int size = end_idx - begin_idx + 1;
     int step = end_idx - begin_idx;
-    double shrink_factor = 1.25;
+    double shrink_factor = 2;
     int changes = 0;
     
 	while (step >= 1){   
@@ -201,18 +201,59 @@ int comb_sort(int a[], int begin_idx, int end_idx){
     return changes;
 }
 
+int calculate_next_gap(int curr_gap, int mode){
+    if (mode == 1)
+        return curr_gap/=2;
+    if (mode == 2){
+        int n = curr_gap;
+        int i = floor(std::log(n)/std::log(2));
+        return (int)(std::pow(2,i)-1);
+    }
+    if (mode == 3){
+        double root5 = std::pow(5,0.5);
+        double phi = (1 + root5)/2;
+        int n = trunc((std::log((curr_gap-1)*root5))/std::log(phi));
+        return round(std::pow(phi,n)/root5);
+    }
+    return -1;
+}
+
+int shell_sort(int a[], int begin_idx, int end_idx){
+    int n = end_idx-begin_idx+1;
+    int changes = 0;
+    int d;
+    for (int gap = n; gap > 0;)
+    {
+        for (int i = gap; i < n; i += 1)
+        {
+            int temp = a[i];
+            int j;            
+            for (j = i; j >= gap && a[j - gap] > temp; j -= gap){
+                a[j] = a[j - gap];
+                changes++;
+            }
+            a[j] = temp;
+        }
+        gap=calculate_next_gap(gap,3);
+    }
+    return changes;
+}
+
 int main(){
 
     int amount_of_runs = 1;
     int sample_size = 1000;
-    bool changes = false;
+    bool changes = true;
+    bool errors = false;
 
     fill(a,maxlen,max_value);
-    run_auto(comb_sort,0,maxlen,amount_of_runs,sample_size, changes);
-    //print_arr(a,100);
-    //comb_sort(a,0,1000);
-    //print_arr(a,100);
-    
-    //std::cout << check_sorted(a,0,1000);
+    run_auto(shell_sort,0,maxlen,amount_of_runs,sample_size, changes, errors);
+    run_auto(shell_sort,0,maxlen,amount_of_runs,sample_size,false,!errors);
+    /*
+    print_arr(a,100);
+    auto x = shell_sort(a,0,100);
+    print_arr(a,100);
+    std::cout << "\n" << check_sorted(a,0,100);
+    */
     return 0;
 }
