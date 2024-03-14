@@ -1,0 +1,3 @@
+C:/mipt_dgap/2_semester/cpp_labs/lab_2/build/CMakeFiles/main.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_2/build/CMakeFiles/ALL_BUILD.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_2/build/CMakeFiles/ZERO_CHECK.dir

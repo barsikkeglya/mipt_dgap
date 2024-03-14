@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/mipt_dgap/build",
+  "command": "C:\\Strawberry\\c\\bin\\g++.exe -g -Werror -Wall -Wextra -pedantic -fsanitize=address -static-libasan -std=c++20 -o CMakeFiles\\main.dir\\sorts.obj -c C:\\mipt_dgap\\2_semester\\cpp_labs\\lab_2\\sorts.cpp",
+  "file": "C:\\mipt_dgap\\2_semester\\cpp_labs\\lab_2\\sorts.cpp",
+  "output": "CMakeFiles\\main.dir\\sorts.obj"
+}
+]

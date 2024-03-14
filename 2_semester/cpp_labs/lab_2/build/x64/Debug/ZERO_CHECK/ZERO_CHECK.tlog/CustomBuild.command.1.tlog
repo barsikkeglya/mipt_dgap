@@ -1,0 +1,10 @@
+^C:\MIPT_DGAP\2_SEMESTER\CPP_LABS\LAB_2\BUILD\CMAKEFILES\E49C629749AAB561ADA046ADBFFD1CF5\GENERATE.STAMP.RULE
+setlocal
+C:\Strawberry\c\bin\cmake.exe -SC:/mipt_dgap/2_semester/cpp_labs/lab_2 -BC:/mipt_dgap/2_semester/cpp_labs/lab_2/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/mipt_dgap/2_semester/cpp_labs/lab_2/build/mytest.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
