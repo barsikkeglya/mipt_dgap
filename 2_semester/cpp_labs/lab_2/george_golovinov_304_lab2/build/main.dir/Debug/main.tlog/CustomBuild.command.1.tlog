@@ -1,0 +1,10 @@
+^C:\USERS\GEORGE\DOCUMENTS\MIPT_DGAP\2_SEMESTER\CPP_LABS\LAB_2\GEORGE_GOLOVINOV_304_LAB2\CMAKELISTS.TXT
+setlocal
+C:\Strawberry\c\bin\cmake.exe -SC:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_2/george_golovinov_304_lab2 -BC:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_2/george_golovinov_304_lab2/build --check-stamp-file C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_2/george_golovinov_304_lab2/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

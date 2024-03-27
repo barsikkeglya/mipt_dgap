@@ -9,9 +9,9 @@ using namespace std;
 #define default_size 100
 #define maxvalue 10000
 
-/*const int maxlength = maxlength;
+const int maxlength = maxlength;
 const int default_size = default_size;
-const int maxvalue = maxvalue;*/
+const int maxvalue = maxvalue;
 
 
 //binomial distribution generator
