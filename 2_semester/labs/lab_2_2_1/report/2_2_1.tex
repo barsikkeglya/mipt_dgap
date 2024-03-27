@@ -35,6 +35,7 @@
 \usetikzlibrary{calc,angles,positioning}
 \usetikzlibrary{arrows}
 \usepackage{float}
+\usepackage{filecontents}
 
 %parskip settings
 \parindent=0ex
@@ -178,5 +179,43 @@
         где $U_0$ --- начальное показание вольтметра.
     \end{multicols}
     \hrule 
+    \newpage
 
+    \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Measured transfer function of analogue filter},
+            grid=both,
+            minor grid style={gray!25},
+            major grid style={gray!25},
+            width=0.75\linewidth,
+            no marks,
+            xlabel={$t$, сек.},
+            ylabel={$U$, мВ}
+            ]
+        \addplot[line width=1pt,solid,color=blue] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711439001210_41.csv};
+        \addlegendentry{$p=41 \ \text{торр}$};
+        \addplot[line width=1pt,solid,color=red] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711440200344_48.5.csv};
+        \addlegendentry{$p=48.5 \ \text{торр}$};
+        \addplot[line width=1pt,solid,color=black] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711441128597_59.5.csv};
+        \addlegendentry{$p=59.5 \ \text{торр}$};
+        \addplot[line width=1pt,solid,color=blue,dashed] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711442143126_82.csv};
+        \addlegendentry{$p=82 \ \text{торр}$};
+        \addplot[line width=1pt,solid,color=red,dashed] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711443254657_119.csv};
+        \addlegendentry{$p=119 \ \text{торр}$};
+        \addplot[line width=1pt,solid,color=black,dashed] %
+            table[x=T,y=U,col sep=comma]{../data/20240326_1711444306232_201.csv};
+        \addlegendentry{$p=201 \ \text{торр}$};
+        \addplot[green,dashed,domain=0:600] {24.308*e^(-x/370.53)};
+
+        \end{axis}
+        
+    \end{tikzpicture}
+    \end{figure}
 \end{document}
