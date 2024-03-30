@@ -100,7 +100,8 @@
       "sstream": "cpp",
       "stdexcept": "cpp",
       "streambuf": "cpp",
-      "typeinfo": "cpp"
+      "typeinfo": "cpp",
+      "cstring": "cpp"
     },
     "cmake.sourceDirectory": "C:/mipt_dgap/2_semester/cpp_labs/lab_2"
   }

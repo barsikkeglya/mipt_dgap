@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <fstream>
 
 struct LinkedList{
     int data;
@@ -105,13 +106,17 @@ unsigned timing(int(*massacre_kind)(int n, int step), int n){
 
     auto end = std::chrono::steady_clock::now();
     auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end-begin);
-    return ((time_span.count()));
+    return static_cast<unsigned>((time_span.count()));
 }
 
 int main(){
+    std::ofstream myfile;
+    myfile.open("../data/task2.csv");
+    myfile << "n,t\n";
     int max_length = 10000;
     for (int i = 10; i <= max_length; i++){
-        std::cout << "(" << i << "," << timing(massacre,i) << ")";
+        //std::cout << "(" << i << "," << timing(massacre,i) << ")";
+        myfile << i << "," << timing(massacre,i) << "\n";
     }
     return 0;
 }

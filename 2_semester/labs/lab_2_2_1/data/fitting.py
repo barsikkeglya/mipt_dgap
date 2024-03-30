@@ -2,33 +2,44 @@ import numpy as np
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
+import matplotlib
 from scipy.optimize import curve_fit
 
-df = pd.read_csv('C:/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711439001210_41.csv', sep=',', header=0)
+paths = ['C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711439001210_41.csv','C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711440200344_48.5.csv','C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711441128597_59.5.csv','C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711442143126_82.csv','C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711443254657_119.csv','C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_2_1/data/20240326_1711444306232_201.csv']
 
-data = df.to_numpy()
-#print(data)
-t = []
-u = []
-sigmat = []
-for x in data:
-    t.append(x[0])
-    u.append(x[1])
-    sigmat.append(x[1]*0.001)
-tnp = np.array(t)
-unp = np.array(u)
-sigmanp = np.array(sigmat)
+v = 0.0012
+ls = 550
 
-f = lambda x, u0, tau: u0*pow(2.71828,-x/tau)
+ps = []
+ds = []
 
-popt, pcov = curve_fit(f,tnp,unp,sigma = sigmanp)
-uf = popt[0]
-tf = popt[1]
+for path in paths:
 
-xlin = np.linspace(0,600,1000)
-plt.figure(figsize=(6,6))
-plt.plot(xlin,f(xlin,uf,tf))
-plt.title('dasgsdfddsa funny plot')
-plt.xlabel('funny xlabel')
-plt.savefig('C:/mipt_dgap/2_semester/labs/lab_2_2_1/data/fig1.eps',format='eps')
-plt.show()
+    df = pd.read_csv(path, sep=',', header=0)
+
+    data = df.to_numpy()
+    #print(data)
+    t = []
+    u = []
+    sigmat = []
+    for x in data:
+        t.append(x[0])
+        u.append(x[1])
+        sigmat.append(x[1]*0.001)
+    tnp = np.array(t)
+    unp = np.array(u)
+    sigmanp = np.array(sigmat)
+
+    f = lambda x, u0, tau: u0*pow(2.71828,-x/tau)
+
+
+    popt, pcov = curve_fit(f,tnp,unp,sigma = sigmanp)
+    uf = popt[0]
+    tf = popt[1]
+    d = v*ls/(2*tf)
+    ps.append(float(path.split('_')[7].replace('.csv','')))
+    ds.append(d*10000)
+    print(path.split('_')[7].replace('.csv',''), uf, tf, d*10000)
+
+for i in range(len(ps)):
+    print('(',1/ps[i],',',ds[i],')')

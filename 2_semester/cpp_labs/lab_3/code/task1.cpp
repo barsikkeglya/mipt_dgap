@@ -39,6 +39,7 @@ LinkedList* reverse_rec(LinkedList * const head){
         head->next = nullptr;
         return n;
     }
+    return head;
 }
 
 LinkedList* reverse_itr(LinkedList * const head){
