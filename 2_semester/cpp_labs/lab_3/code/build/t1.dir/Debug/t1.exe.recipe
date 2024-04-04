@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t1.exe</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t1.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

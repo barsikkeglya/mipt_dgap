@@ -2,19 +2,19 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t1.exe</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t1.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t2.exe</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t2.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t3.exe</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\Debug\t3.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\George\Documents\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\mipt_dgap\2_semester\cpp_labs\lab_3\code\build\x64\Debug\ALL_BUILD</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

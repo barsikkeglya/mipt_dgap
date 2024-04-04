@@ -115,8 +115,8 @@
                     title={\text{log}t(\text{log}n)},
                     xmode = log,
                     ymode = log,
-                    xlabel={Array length},
-                    ylabel={t, ms},
+                    xlabel={$\log n$},
+                    ylabel={$\log t$},
                     legend pos=south east,
                     ymajorgrids=true,
                     xmajorgrids=true,
@@ -149,13 +149,13 @@
                 grid style=dashed,]
             \addplot[line width=1pt,solid,color=blue] %
             table[x=n,y=t,col sep=comma]{../data/task3_3.csv};
-            \addlegendentry{Push 3}
+            \addlegendentry{Push 3 ($\cdot 2$)}
             \addplot[line width=1pt,solid,color=red] %
             table[x=n,y=t,col sep=comma]{../data/task3_2.csv};
-            \addlegendentry{Push 2}
+            \addlegendentry{Push 2 (+1000)}
             \addplot[line width=1pt,solid,color=black,dashed] %
             table[x=n,y=t,col sep=comma]{../data/task3_1.csv};
-            \addlegendentry{Push 1}
+            \addlegendentry{Push 1 (+1)}
             \end{axis}
         \end{tikzpicture}
     \end{figure}
@@ -174,10 +174,10 @@
                 grid style=dashed,]
             \addplot[line width=1pt,solid,color=blue] %
             table[x=n,y=t,col sep=comma]{../data/task3_3.csv};
-            \addlegendentry{Push 3}
+            \addlegendentry{Push ($\cdot 2$)}
             \addplot[line width=1pt,solid,color=red] %
             table[x=n,y=t,col sep=comma]{../data/task3_2.csv};
-            \addlegendentry{Push 2}
+            \addlegendentry{Push 2 (+1000)}
             \end{axis}
         \end{tikzpicture}
     \end{figure}
@@ -188,18 +188,18 @@
                 title={$\text{log}t(\text{log}n)$},
                 xmode = log,
                 ymode = log,
-                xlabel={Target size},
-                ylabel={t, ms},
+                xlabel={$\log n$},
+                ylabel={$\log t$},
                 legend pos=north west,
                 ymajorgrids=true,
                 xmajorgrids=true,
                 grid style=dashed,]
             \addplot[line width=1pt,solid,color=blue] %
             table[x=n,y=t,col sep=comma]{../data/task3_3.csv};
-            \addlegendentry{Push 3}
+            \addlegendentry{Push 3 ($\cdot 2$)}
             \addplot[line width=1pt,solid,color=red] %
             table[x=n,y=t,col sep=comma]{../data/task3_2.csv};
-            \addlegendentry{Push 2}
+            \addlegendentry{Push 2 (+1000)}
             \end{axis}
         \end{tikzpicture}
     \end{figure}

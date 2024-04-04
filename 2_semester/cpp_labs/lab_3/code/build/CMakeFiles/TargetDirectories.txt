@@ -1,5 +1,5 @@
-C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t1.dir
-C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t2.dir
-C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t3.dir
-C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/George/Documents/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/ZERO_CHECK.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t1.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t2.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/t3.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/ALL_BUILD.dir
+C:/mipt_dgap/2_semester/cpp_labs/lab_3/code/build/CMakeFiles/ZERO_CHECK.dir
