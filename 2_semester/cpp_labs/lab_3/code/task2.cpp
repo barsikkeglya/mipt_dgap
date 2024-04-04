@@ -111,12 +111,12 @@ unsigned timing(int(*massacre_kind)(int n, int step), int n){
 
 int main(){
     std::ofstream myfile;
-    myfile.open("../data/task2.csv");
+    myfile.open("../data/task2_1.csv");
     myfile << "n,t\n";
     int max_length = 10000;
     for (int i = 10; i <= max_length; i++){
         //std::cout << "(" << i << "," << timing(massacre,i) << ")";
-        myfile << i << "," << timing(massacre,i) << "\n";
+        myfile << i << "," << timing(massacre_array,i) << "\n";
     }
     return 0;
 }
