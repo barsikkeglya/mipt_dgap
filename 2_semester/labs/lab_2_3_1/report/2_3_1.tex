@@ -115,6 +115,12 @@
 
     \hrule
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{../img/ustanovka.png}
+        \caption{Схема Экспериментальной установки.}
+    \end{figure}
+
     \newpage
 
     \subsection{Процесс откачки}
@@ -133,6 +139,7 @@
         значит
         \begin{gather}
             p_\text{пр}W=Q_\text{д}+Q_\text{н}+Q_\text{и}
+            \label{lim}
         \end{gather}
 
         Обычно $Q_\text{и}$ --- постоянно, а два других потока слабо зависят от времени, поэтому скорость откачки $W$ можно считать постоянной. Чтобы отойти от предельного давления следует проинтегрировать \eqref{eq:1}:
@@ -141,11 +148,12 @@
             -V\int_{p_\text{пр}}^{p}\frac{dp}{p}=\int_{0}^{t}\left(W-\frac{\sum Q_i}{p}\right)dt \\
             p-p_\text{пр}=(p_0-p_\text{пр})\exp{\left(-\frac{W}{V}t\right)}
         \end{gather*}
-        учитывая, что $p_\text{пр}\ll p_0$, получим:
+        Будем тогда аппроксимировать функцией:
+
         \begin{gather}
-            p=p_0\exp{\left(-\frac{W}{V}t\right)}
+            p(t)=p_1 \exp\left(-\frac{W}{V}t\right)+p_2
         \end{gather}
-        Постоянная откачки $\tau=V/W$ является мерой эффективности откачки системы.
+        где $p_1=p_0-p_\text{пр}$, $p_2=p_\text{пр}$.
 
     \end{multicols}
 
@@ -154,6 +162,98 @@
     \section{Обработка результатов измерений}
 
     \begin{multicols}{2}
+        С помощью капилляра известного объема, кранов и масляного манометра определим объем вакуумной и форвакуумной части установки:
+
+        \begin{gather*}
+            V_\text{форвакуумной}=2110 \  \text{см}^3\\
+            V_\text{вакуумной}=1141 \ \text{см}^3
+        \end{gather*}
+
+        После достижения $3\cdot 10^{-2}$ торр начинаем высоковакуумную откачку с помощью диффузионного насоса. При достижении $7\cdot 10^{-4}$ торр на термопарном манометре включаем ионизационную лампу. Ждем установления предельного давления. В нашем случае оно составило $2\cdot 10^{-4}$ торр.
+
+        Закрывая и открывая кран, ведущий к диффузионному насосу, оценим ухудшение и улучшение вакуума:
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=0.9]
+                \begin{axis}[name=plot1,
+                    title={Ухудшение давления в высоковакуумной части},
+                    xlabel={$t$, c},
+                    ylabel={$p$, $\cdot$10$^{-4}$ торр},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[line width=1pt,solid,color=blue] %
+                    table[x=t,y=p,col sep=comma]{../data/bad.csv};
+                    \addlegendentry{$p(t)$}
+                    \addplot[black,dashed,domain=7:34] {0.163*x+0.55};
+                    \addlegendentry{Аппроксимация}
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Ухудшение давления со временем из-за течи в системе.}
+            \label{fig:1}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale=0.9]
+                \begin{axis}[name=plot1,
+                    title={Улучшение давления в высоковакуумной части},
+                    xlabel={$t$, c},
+                    ylabel={$p$, $\cdot$10$^{-4}$ торр},
+                    legend pos=north east,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[line width=1pt,solid,color=blue] %
+                    table[x=t,y=p,col sep=comma]{../data/good.csv};
+                    \addlegendentry{$p(t)$}
+                    \addplot[black,dashed,domain=0:14] {7.15*e^(-x/4.88)+1.13};
+                    \addlegendentry{Аппроксимация}
+                \end{axis}
+            \end{tikzpicture}
+            \caption{График улучшения давления при работающем диффузионном насосе.}
+        \end{figure}
+
+        Аппроксимируя по методу $\chi^2$ получим характерное значение $\tau = (4.88\pm 0.29) \ \text{с}$. При этом $p_1 = (7.15\pm 0.07)$ Па, $p_2 = (1.12 \pm 0.10)$ Па.
+
+        Из него получим по формуле $\tau = V/W$:
+        \begin{gather*}
+            W=(233.8 \pm 13.9) \ \text{см}^3/\text{с}
+        \end{gather*}
+
+        Получим величину откачки другим образом: сделаем искусственную течь. Установившееся давление при этом равно $2.9\cdot 10^{-4}$ торр.
         
+        \begin{gather*}
+            W(p_\text{уст}-p_\text{пр})=\frac{d(pV)_\text{капилляра}}{dt} \\
+            W=\frac{4}{3}\frac{r^3}{L}\sqrt{\frac{2\pi R T}{\mu}}\cdot\frac{p_\text{фв}}{p_\text{уст}-p_\text{пр}}
+        \end{gather*}
+
+        Учитывая давление в форвакуумной части $p_\text{фв}$ получим $W\approx 290 \ \text{см}^3/\text{с}$, что несколько больше $W$ из аппроксимации. Это может быть связано с тем, что в установке появились новые течи, а также с тем, что в реальности $W$ все же зависит от давления.
+        
+        Теперь оценим величину $Q_\text{н}$. Это можно сделать следующим образом:
+
+        Из \ref{fig:1} найдем наклон прямой: $V\cdot dp/dt=Q_\text{и}+Q_\text{д}$. $Q_\text{н}$ свой вклад в данном случае не вносит, так как насос не имеет доступа к высоковакуумной части установки в это время.
+
+        Тогда используя формулу \eqref{lim} найдем $Q_\text{н}$:
+        \begin{gather}
+            Q_\text{н}=p_\text{пр}W-(Q_\text{и}+Q_\text{д})=p_\text{пр}W-V\cdot \frac{dp}{dt}
+        \end{gather}
+
+        Точки достаточно хорошо ложатся на прямую, коэффициент $k=dp/dt\approx 0.16\cdot 10^{-4}$ торр/с. Получим:
+        \begin{gather*}
+            Q_\text{н}=(280.7\pm 16.7)\  \text{торр}\cdot\text{см}^3/\text{с}
+        \end{gather*}
+    \end{multicols}
+
+    \hrule
+
+    \section{Выводы}
+
+    \begin{multicols}{2}
+        В результате работы мы познакомились с методами получения и измерения вакуума, с помощью диффузионного насоса получили довольно высокий вакуум, исследовали характеристики насоса при этих давлениях двумя методами. Сравнили результаты.
+
+        Значения несколько расходятся, это может быть объяснено в том числе тем, что производительность насоса зависит от давления.
     \end{multicols}
 \end{document}

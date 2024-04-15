@@ -5,7 +5,7 @@ import math
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-paths = ['C:/mipt_dgap/2_semester/labs/lab_2_4_1/data/hotter.csv']
+paths = ['C:/Users/George/Documents/mipt_dgap/2_semester/labs/lab_2_3_1/data/bad.csv']
 
 for path in paths:
     df = pd.read_csv(path,sep=',',header=0)
@@ -24,7 +24,7 @@ for path in paths:
     etn = np.array(et)
     epn = np.array(ep)
     
-    f = lambda x, k, b: k*x+b
+    f = lambda x,k,b: k*x+b
 
     popt,pcov=curve_fit(f,tn,pn,sigma = epn)
     kf = popt[0]
