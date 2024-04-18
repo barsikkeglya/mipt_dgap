@@ -39,7 +39,15 @@ for path in paths:
     d = v*ls/(2*tf)
     ps.append(float(path.split('_')[7].replace('.csv','')))
     ds.append(d*10000)
-    print(path.split('_')[7].replace('.csv',''), uf, tf, d*10000)
-
+    print(path.split('_')[7].replace('.csv',''), uf, tf, np.diag(pcov))
+pn = []
+dn = []
 for i in range(len(ps)):
     print('(',1/ps[i],',',ds[i],')')
+    pn.append(1/ps[i])
+    dn.append(ds[i])
+
+f1 = lambda x, k, b: k*x+b
+popt,pcov=curve_fit(f1,pn,dn)
+print(popt[0],popt[1],np.diag(pcov))
+print(f1(1/760,popt[0]+np.diag(pcov)[0],popt[1]))
