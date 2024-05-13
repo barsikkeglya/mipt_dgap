@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\mipt_dgap\2_semester\cpp_labs\lab_4\task3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\mipt_dgap\2_semester\cpp_labs\lab_4\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CFC609A8-4A57-3413-ADE8-AF8E0C23EDB7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,5 @@
+/home/barsikkeglya/fuckthisbullshit2/build/CMakeFiles/t1.dir
+/home/barsikkeglya/fuckthisbullshit2/build/CMakeFiles/t2.dir
+/home/barsikkeglya/fuckthisbullshit2/build/CMakeFiles/t3.dir
+/home/barsikkeglya/fuckthisbullshit2/build/CMakeFiles/edit_cache.dir
+/home/barsikkeglya/fuckthisbullshit2/build/CMakeFiles/rebuild_cache.dir
