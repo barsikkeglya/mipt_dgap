@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic -fsanitize=address CMakeFiles/t3.dir/task3.o -o t3 

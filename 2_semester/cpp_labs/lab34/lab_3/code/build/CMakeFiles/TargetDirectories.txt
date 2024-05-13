@@ -1,0 +1,5 @@
+/home/barsikkeglya/lab_3/code/build/CMakeFiles/t1.dir
+/home/barsikkeglya/lab_3/code/build/CMakeFiles/t2.dir
+/home/barsikkeglya/lab_3/code/build/CMakeFiles/t3.dir
+/home/barsikkeglya/lab_3/code/build/CMakeFiles/edit_cache.dir
+/home/barsikkeglya/lab_3/code/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,194 @@
+\documentclass[a4paper,12pt]{report}
+%general packages
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage[dvipsnames]{xcolor}
+
+%fancy header + geometry
+\usepackage{fancyhdr}
+\usepackage[a4paper,includehead,nomarginpar,left=15mm,right=15mm,top=15mm,headheight=10mm,bottom=20mm]{geometry}
+
+%pgfplots
+\usepackage{pgfplots}
+\usepackage{pgfkeys}
+\pgfplotsset{compat=1.12}
+\usepackage{mathrsfs}
+
+%multi column text
+\usepackage{blindtext}
+\usepackage{multicol}
+
+%tikz (draw)
+\usepackage{tikz}
+\usepackage{pstricks-add}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+\usetikzlibrary{arrows}
+\usepackage{float}
+
+%parskip settings
+\parindent=0ex
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+%fancy notation for sets
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+%sgn function
+\DeclareMathOperator{\sgn}{sgn}
+
+% intersection and union symbols
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand{\celsius}{$\ ^\circ C$}
+
+%environments
+
+\newtheorem{problem}{Задача}[]
+\newenvironment{sol}{\paragraph{Решение}}{}
+\renewcommand\thesection{\arabic{section}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{\baselineskip}{0pt}
+\titlespacing*{\paragraph}
+{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\paragraph}
+{0pt}{0.1\baselineskip}{\baselineskip}
+
+\setcounter{secnumdepth}{0}
+
+\begin{document}
+	\input{titlepage.tex}
+	\newpage
+	%\pagenumbering{arabic}
+    \pagestyle{fancy}
+
+    \fancyhead{}
+    \fancyfoot{}
+    \fancyhead[L]{\rightmark}
+    \fancyhead[R]{\thepage}
+    \fancyfoot[R]{Лабораторная работа 4 --- структуры данных-2}
+
+    %\begin{multicols}{2}
+
+        \section{Хэш-таблица.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[]
+                \begin{axis}[name=plot1,
+                    width=0.75\linewidth,
+                    title={t(n)},
+                    %xmode = log,
+                    %ymode = log,
+                    xlabel={Size},
+                    ylabel={t, ms},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                \addplot[line width=1pt,solid,color=black] %
+                table[x=N,y=iT,col sep=comma]{../data/hash.csv};
+                \addlegendentry{Вставка}
+                \addplot[line width=1pt,solid,color=red] %
+                table[x=N,y=sT,col sep=comma]{../data/hash.csv};
+                \addlegendentry{Поиск}
+                \addplot[line width=1pt,solid,color=blue] %
+                table[x=N,y=dT,col sep=comma]{../data/hash.csv};
+                \addlegendentry{Удаление}
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+
+        \section{Несбалансированное дерево.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[]
+                \begin{axis}[name=plot1,
+                    width=0.75\linewidth,
+                    title={t(n)},
+                    xmode = log,
+                    ymode = log,
+                    xlabel={Size},
+                    ylabel={t, ms},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[line width=1pt,solid,color=blue] %
+            table[x=n,y=iTa,col sep=comma]{../data/bin_tree.csv};
+            \addlegendentry{Вставка}
+                \addplot[line width=1pt,solid,color=red] %
+                table[x=n,y=sTa,col sep=comma]{../data/bin_tree.csv};
+                \addlegendentry{Поиск}
+                \addplot[line width=1pt,solid,color=green] %
+                table[x=n,y=dTa,col sep=comma]{../data/bin_tree.csv};
+                \addlegendentry{Удаление}
+                \addplot[line width=1pt,solid,color=pink] %
+                table[x=n,y=iTb,col sep=comma]{../data/bin_tree.csv};
+                \addlegendentry{Вставка (неравномерно)}
+                \addplot[line width=1pt,solid,color=orange] %
+                table[x=n,y=sTb,col sep=comma]{../data/bin_tree.csv};
+                \addlegendentry{Поиск (неравномерно)}
+                \addplot[line width=1pt,solid,color=black] %
+                table[x=n,y=dTb,col sep=comma]{../data/bin_tree.csv};
+                \addlegendentry{Удаление (неравномерно)}
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+
+        
+        \section{AVL дерево.}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[]
+                \begin{axis}[name=plot1,
+                    width=0.75\linewidth,
+                    title={t(n)},
+                    xmode = log,
+                    ymode = log,
+                    xlabel={Size},
+                    ylabel={t, ms},
+                    legend pos=north west,
+                    ymajorgrids=true,
+                    xmajorgrids=true,
+                    grid style=dashed,]
+                    \addplot[line width=1pt,solid,color=blue] %
+            table[x=N,y=iTa,col sep=comma]{../data/avl.csv};
+            \addlegendentry{Вставка}
+                \addplot[line width=1pt,solid,color=red] %
+                table[x=N,y=sTa,col sep=comma]{../data/avl.csv};
+                \addlegendentry{Поиск}
+                \addplot[line width=1pt,solid,color=green] %
+                table[x=N,y=dTa,col sep=comma]{../data/avl.csv};
+                \addlegendentry{Удаление}
+                \addplot[line width=1pt,solid,color=pink] %
+                table[x=N,y=iTb,col sep=comma]{../data/avl.csv};
+                \addlegendentry{Вставка (неравномерно)}
+                \addplot[line width=1pt,solid,color=orange] %
+                table[x=N,y=sTb,col sep=comma]{../data/avl.csv};
+                \addlegendentry{Поиск (неравномерно)}
+                \addplot[line width=1pt,solid,color=black] %
+                table[x=N,y=dTb,col sep=comma]{../data/avl.csv};
+                \addlegendentry{Удаление (неравномерно)}
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+       
+\end{document}
