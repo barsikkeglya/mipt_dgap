@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg6556"
+   viewBox="0 0 205 154"
+   version="1.1"
+   height="154mm"
+   width="205mm">
+  <metadata
+     id="metadata6897">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6558">
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(.265 0 0 .265 0-8)"
+       y2="184"
+       y1="29"
+       x2="728"
+       x1="672"
+       id="r">
+      <stop
+         id="stop6561"
+         offset="0"
+         stop-color="#ee7" />
+      <stop
+         id="stop6563"
+         offset="1"
+         stop-color="#eb3" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(.265 0 0 .265 0 429)"
+       y2="-70"
+       y1="-119"
+       x2="725"
+       x1="697"
+       id="s">
+      <stop
+         id="stop6566"
+         offset="0"
+         stop-color="#fe7" />
+      <stop
+         id="stop6568"
+         offset="1"
+         stop-color="#eb3" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0-28)"
+       y2="183"
+       y1="28"
+       x2="586"
+       x1="530"
+       id="l">
+      <stop
+         id="stop6571"
+         offset="0"
+         stop-color="#f97" />
+      <stop
+         id="stop6573"
+         offset="1"
+         stop-color="#d54" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0 161)"
+       y2="-70"
+       y1="-119"
+       x2="583"
+       x1="555"
+       id="k">
+      <stop
+         id="stop6576"
+         offset="0"
+         stop-color="#f97" />
+      <stop
+         id="stop6578"
+         offset="1"
+         stop-color="#d54" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0-28)"
+       y2="472"
+       y1="317"
+       x2="155"
+       x1="99"
+       id="j">
+      <stop
+         id="stop6581"
+         offset="0"
+         stop-color="#af7" />
+      <stop
+         id="stop6583"
+         offset="1"
+         stop-color="#6c3" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0 161)"
+       y2="219"
+       y1="170"
+       x2="153"
+       x1="124"
+       id="i">
+      <stop
+         id="stop6586"
+         offset="0"
+         stop-color="#af7" />
+      <stop
+         id="stop6588"
+         offset="1"
+         stop-color="#6c3" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0-28)"
+       y2="184"
+       y1="29"
+       x2="155"
+       x1="99"
+       id="h">
+      <stop
+         id="stop6591"
+         offset="0"
+         stop-color="#ebf" />
+      <stop
+         id="stop6593"
+         offset="1"
+         stop-color="#a7d" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0 161)"
+       y2="-70"
+       y1="-119"
+       x2="153"
+       x1="124"
+       id="g">
+      <stop
+         id="stop6596"
+         offset="0"
+         stop-color="#ebf" />
+      <stop
+         id="stop6598"
+         offset="1"
+         stop-color="#a7d" />
+    </linearGradient>
+  </defs>
+  <rect
+     id="rect6600"
+     fill="#fff"
+     height="154"
+     width="205" />
+  <path
+     id="path6602"
+     stroke-width=".5"
+     stroke-opacity=".07"
+     stroke="#722"
+     fill-opacity=".03"
+     fill="#ca0"
+     d="m36 6c-6.3 0-11.5 5-11.5 11.5v114c0 6.3 5 11.5 11.5 11.5h114.1c6.3 0 11.5-5 11.5-11.5v-114.1c0-6.3-5-11.5-11.5-11.5l-114 0z" />
+  <path
+     id="path6604"
+     stroke-width=".5"
+     stroke-opacity=".1"
+     stroke="#722"
+     fill-opacity=".04"
+     fill="#ca0"
+     d="m36 8.5c-5 0-8.8 4-8.8 8.8l0 37.5c0 5 4 8.8 8.8 8.8h75c5 0 8.8-4 8.8-8.8 0-15.8 13.5-28.7 30-28.7 5 0 8.8-4 8.8-8.8s-4-8.8-8.8-8.8h-114z" />
+  <g
+     transform="matrix(.265 0 0 .265-.6-.6)"
+     id="c">
+    <path
+       id="path6607"
+       opacity=".7"
+       fill="url(#l)"
+       d="m626.5 129c0 9.4-7.6 17-17 17h-102c-9.4 0-17-7.6-17-17v-102c0-9.4 7.6-17 17-17h102c9.4 0 17 7.6 17 17zm-5.7-102c0-6.3-5-11.3-11.3-11.3h-102c-6.3 0-11.3 5-11.3 11.3v102c0 6.3 5 11.3 11.3 11.3h102c6.3 0 11.3-5 11.3-11.3z" />
+    <circle
+       id="circle6609"
+       fill="url(#k)"
+       r="29"
+       cy="67"
+       cx="570" />
+  </g>
+  <g
+     transform="matrix(.265 0 0 .265-.6-.6)"
+     id="a">
+    <path
+       id="path6612"
+       opacity=".7"
+       fill="url(#j)"
+       d="m195.6 418c0 9.4-7.6 17-17 17h-102c-9.4 0-17-7.6-17-17v-102c0-9.4 7.6-17 17-17h102c9.4 0 17 7.6 17 17zm-5.7-102c0-6.3-5-11.3-11.3-11.3h-102c-6.3 0-11.3 5-11.3 11.3v102c0 6.3 5 11.3 11.3 11.3h102c6.3 0 11.3-5 11.3-11.3z" />
+    <circle
+       id="circle6614"
+       fill="url(#i)"
+       r="29"
+       cy="356"
+       cx="140" />
+  </g>
+  <path
+     id="path6616"
+     opacity=".7"
+     fill="url(#r)"
+     d="m202.8 33.5c0 2.5-2 4.5-4.5 4.5h-27c-2.5 0-4.5-2-4.5-4.5v-27c0-2.5 2-4.5 4.5-4.5h27c2.5 0 4.5 2 4.5 4.5zm-1.5-27c0-1.7-1.3-3-3-3h-27c-1.7 0-3 1.3-3 3v27c0 1.7 1.3 3 3 3h27c1.7 0 3-1.3 3-3z" />
+  <circle
+     id="circle6618"
+     fill="url(#s)"
+     r="8"
+     cy="17"
+     cx="188" />
+  <g
+     transform="matrix(.265 0 0 .265-.6-.6)"
+     id="b">
+    <path
+       id="path6621"
+       opacity=".7"
+       fill="url(#h)"
+       d="m195.4 129c0 9.4-7.6 17-17 17h-102c-9.4 0-17-7.6-17-17v-102c0-9.4 7.6-17 17-17h102c9.4 0 17 7.6 17 17zm-5.7-102c0-6.3-5-11.3-11.3-11.3h-102c-6.3 0-11.3 5-11.3 11.3v102c0 6.3 5 11.3 11.3 11.3h102c6.3 0 11.3-5 11.3-11.3z" />
+    <circle
+       id="circle6623"
+       fill="url(#g)"
+       r="29"
+       cy="67"
+       cx="139" />
+  </g>
+  <path
+     id="path6625"
+     stroke-width=".3"
+     stroke="#000"
+     fill="none"
+     d="m13 20 1 1-1 1m-1-1h2m-1-8.5 1 1-1 1m-1-1h2m-1-8 1 1-1 1m-1-1h2" />
+  <use
+     id="use6627"
+     xlink:href="#b"
+     transform="translate(37.6)" />
+  <use
+     id="use6629"
+     xlink:href="#b"
+     transform="translate(75.4)" />
+  <use
+     id="use6631"
+     xlink:href="#b"
+     transform="translate(0 37.5)" />
+  <use
+     id="use6633"
+     xlink:href="#b"
+     transform="translate(37.6 37.5)" />
+  <use
+     id="use6635"
+     xlink:href="#b"
+     transform="translate(75.4 37.5)" />
+  <use
+     id="use6637"
+     xlink:href="#a"
+     transform="translate(0 37.5)" />
+  <use
+     id="use6639"
+     xlink:href="#a"
+     transform="translate(37.5)" />
+  <use
+     id="use6641"
+     xlink:href="#a"
+     transform="translate(75.3)" />
+  <use
+     id="use6643"
+     xlink:href="#a"
+     transform="translate(37.5 37.5)" />
+  <use
+     id="use6645"
+     xlink:href="#a"
+     transform="translate(75.4 37.5)" />
+  <use
+     id="use6647"
+     xlink:href="#c"
+     transform="translate(0 37.5)" />
+  <use
+     id="use6649"
+     xlink:href="#c"
+     transform="translate(0 76.5)" />
+  <use
+     id="use6651"
+     xlink:href="#c"
+     transform="translate(0 114)" />
+  <path
+     id="path6653"
+     stroke-width=".5"
+     stroke-opacity=".1"
+     stroke="#722"
+     fill-opacity=".05"
+     fill="#ca0"
+     d="m36.2 7.3c-5.6 0-10.2 4.5-10.2 10.2v76.5c0 5.6 4.5 10.2 10.2 10.2h75c5.6 0 10.2-4.5 10.2-10.2 0-16 12.9-29 29-29 5.6 0 10.2-4.5 10.2-10.2v-37.5c0-5.6-4.5-10.2-10.2-10.2l-114 0z" />
+  <g
+     id="g6655"
+     text-anchor="middle"
+     style="font-family:'Arial';-inkscape-font-specification:'Arial'">
+    <g
+       id="g6657"
+       font-size="14px"
+       style="font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman'">
+      <text
+         id="text6659"
+         y="22"
+         x="188">H</text>
+      <text
+         id="text6661"
+         y="98"
+         x="150">Z</text>
+      <text
+         id="text6663"
+         y="136"
+         x="150">W</text>
+      <text
+         id="text6665"
+         y="20"
+         x="74">c</text>
+      <text
+         id="text6667"
+         y="21"
+         x="111">t</text>
+      <text
+         id="text6669"
+         y="19"
+         x="150">g</text>
+      <text
+         id="text6671"
+         y="57"
+         x="74">s</text>
+      <text
+         id="text6673"
+         y="59"
+         x="111">b</text>
+      <text
+         id="text6675"
+         y="57"
+         x="150">γ</text>
+      <text
+         id="text6677"
+         y="97"
+         x="111">τ</text>
+      <text
+         id="text6679"
+         y="96"
+         x="74">μ</text>
+      <text
+         id="text6681"
+         y="59"
+         x="36">d</text>
+      <text
+         id="text6683"
+         y="20"
+         x="35">u</text>
+      <text
+         id="text6685"
+         y="97"
+         x="36">e</text>
+      <text
+         id="text6687"
+         y="133"
+         x="36">ν<tspan
+   id="tspan6689"
+   font-size="8px"
+   dy="2">e</tspan>
+</text>
+      <text
+         id="text6691"
+         y="133"
+         x="74">ν<tspan
+   id="tspan6693"
+   font-size="8px"
+   dy="2">μ</tspan>
+</text>
+      <text
+         id="text6695"
+         y="133"
+         x="111">ν<tspan
+   id="tspan6697"
+   font-size="8px"
+   dy="2">τ</tspan>
+</text>
+    </g>
+    <g
+       id="g6699"
+       font-size="5px">
+      <text
+         id="text6701"
+         y="69"
+         x="146">фотон</text>
+      <text
+         id="text6703"
+         y="69"
+         x="108">прелестный</text>
+      <text
+         id="text6705"
+         y="69"
+         x="71">странный</text>
+      <text
+         id="text6707"
+         y="69"
+         x="33">нижний</text>
+      <text
+         id="text6709"
+         y="143"
+         x="33">электронное</text>
+      <text
+         id="text6711"
+         y="108"
+         x="33">электрон</text>
+      <text
+         id="text6713"
+         y="148"
+         x="33">нейтрино</text>
+      <text
+         id="text6715"
+         y="108"
+         x="109">тау-</text>
+      <text
+         id="text6717"
+         y="143"
+         x="108">тау-</text>
+      <text
+         id="text6719"
+         y="108"
+         x="71">мюон</text>
+      <text
+         id="text6721"
+         y="143"
+         x="71">мюонное</text>
+      <text
+         id="text6723"
+         y="148"
+         x="109">нейтрино</text>
+      <text
+         id="text6725"
+         y="148"
+         x="71">нейтрино</text>
+      <text
+         id="text6727"
+         y="146"
+         x="147">W-бозон</text>
+      <text
+         id="text6729"
+         y="34"
+         x="184">Хиггса</text>
+      <text
+         id="text6731"
+         y="31"
+         x="146">глюон</text>
+      <text
+         id="text6733"
+         y="108"
+         x="146">Z-бозон</text>
+      <text
+         id="text6735"
+         y="31"
+         x="32">верхний</text>
+      <text
+         id="text6737"
+         y="31"
+         x="71">очарованный</text>
+      <text
+         id="text6739"
+         y="31"
+         x="109">истинный</text>
+      <text
+         id="text6741"
+         y="29"
+         x="184">бозон</text>
+    </g>
+    <g
+       id="g6743"
+       font-size="3.5px">
+      <text
+         id="text6745"
+         y="122"
+         x="66">&lt;0,19 МэВ/<tspan
+   id="tspan6747"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6749"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6751"
+         y="122"
+         x="103">&lt;18,2 МэВ/<tspan
+   id="tspan6753"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6755"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6757"
+         y="122"
+         x="142">80,38 ГэВ/<tspan
+   id="tspan6759"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6761"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6763"
+         y="84"
+         x="29">0,511 МэВ/<tspan
+   id="tspan6765"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6767"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6769"
+         y="84"
+         x="66">105,7 МэВ/<tspan
+   id="tspan6771"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6773"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6775"
+         y="84"
+         x="103">1,777 ГэВ/<tspan
+   id="tspan6777"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6779"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6781"
+         y="84"
+         x="142">91,19 ГэВ/<tspan
+   id="tspan6783"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6785"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6787"
+         y="45"
+         x="103">≈4,18 ГэВ/<tspan
+   id="tspan6789"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6791"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6793"
+         y="45"
+         x="66">≈93,4 МэВ/<tspan
+   id="tspan6795"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6797"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6799"
+         y="45"
+         x="28">≈4,67 МэВ/<tspan
+   id="tspan6801"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6803"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6805"
+         y="8"
+         x="28">≈2,16 МэВ/<tspan
+   id="tspan6807"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6809"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6811"
+         y="8"
+         x="66">≈1,27 ГэВ/<tspan
+   id="tspan6813"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6815"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6817"
+         y="8"
+         x="104">≈172,7 ГэВ/<tspan
+   id="tspan6819"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6821"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6823"
+         y="8"
+         x="181">≈125,25 ГэВ/<tspan
+   id="tspan6825"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6827"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6829"
+         y="122"
+         x="26">&lt;1,1 эВ/<tspan
+   id="tspan6831"
+   font-style="italic">c</tspan>
+<tspan
+   id="tspan6833"
+   font-size="2px"
+   dy="-2">2</tspan>
+</text>
+      <text
+         id="text6835"
+         y="92"
+         x="133">0</text>
+      <text
+         id="text6837"
+         y="99"
+         x="133">1</text>
+      <text
+         id="text6839"
+         y="136"
+         x="133">1</text>
+      <text
+         id="text6841"
+         y="128"
+         x="134">±1</text>
+      <text
+         id="text6843"
+         y="15"
+         x="170">0</text>
+      <text
+         id="text6845"
+         y="22"
+         x="170">0</text>
+      <g
+         id="e">
+        <text
+           id="text6848"
+           y="8"
+           x="133">0</text>
+        <text
+           id="text6850"
+           y="15"
+           x="133">0</text>
+        <text
+           id="text6852"
+           y="22"
+           x="133">1</text>
+      </g>
+      <use
+         id="use6854"
+         xlink:href="#e"
+         transform="translate(0 38)" />
+      <g
+         id="d">
+        <text
+           id="text6857"
+           y="15"
+           x="20">2/3</text>
+        <text
+           id="text6859"
+           y="22"
+           x="20">1/2</text>
+        <text
+           id="text6861"
+           y="53"
+           x="20">-1/3</text>
+        <text
+           id="text6863"
+           y="60"
+           x="20">1/2</text>
+        <text
+           id="text6865"
+           y="92"
+           x="20">-1</text>
+        <text
+           id="text6867"
+           y="136"
+           x="20">1/2</text>
+        <text
+           id="text6869"
+           y="99"
+           x="20">1/2</text>
+        <text
+           id="text6871"
+           y="128"
+           x="20">0</text>
+      </g>
+      <use
+         id="use6873"
+         xlink:href="#d"
+         transform="translate(38)" />
+      <use
+         id="use6875"
+         xlink:href="#d"
+         transform="translate(75.4)" />
+    </g>
+    <g
+       id="g6877"
+       text-anchor="start"
+       font-weight="bold"
+       font-size="7px">
+      <text
+         id="text6879"
+         fill="#5c2"
+         y="11"
+         x="-150"
+         transform="rotate(-90)">ЛЕПТОНЫ</text>
+      <text
+         id="text6881"
+         fill="#c9f"
+         y="11"
+         x="-76"
+         transform="rotate(-90)">КВАРКИ</text>
+      <text
+         id="text6883"
+         fill="#f00"
+         y="173"
+         x="-150"
+         transform="rotate(-90)">КАЛИБРОВОЧНЫЕ БОЗОНЫ<tspan
+   id="tspan6885"
+   y="180"
+   x="-150">(ВЕКТОРНЫЕ)</tspan>
+</text>
+      <text
+         style="fill:#ffcc00"
+         id="text6887"
+         y="200"
+         x="-119.51556"
+         transform="matrix(0,-1,1,0,0,0)">СКАЛЯРНЫЕ БОЗОНЫ</text>
+    </g>
+    <text
+       id="text6889"
+       font-size="4px"
+       text-anchor="end"
+       y="22"
+       x="12">спин<tspan
+   id="tspan6891"
+   y="8"
+   x="12">масса</tspan>
+<tspan
+   id="tspan6893"
+   y="15"
+   x="12">заряд</tspan>
+</text>
+  </g>
+  <text
+     transform="scale(1.0799646,0.92595628)"
+     id="text6723-6"
+     y="121.17175"
+     x="93.010384"
+     style="font-size:5.0360117px;font-family:Arial;-inkscape-font-specification:Arial">лептон</text>
+</svg>

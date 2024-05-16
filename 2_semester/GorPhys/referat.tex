@@ -1,0 +1,169 @@
+\documentclass[a4paper,12pt]{report}
+%general packages
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{circuitikz}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{cancel} %cancel symbol
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{paralist}
+
+%\usepackage{epstopdf} %converting to PDF
+%\usepackage{auto-pst-pdf}
+
+%fancy header + geometry
+\usepackage{fancyhdr}
+\usepackage[a4paper,nomarginpar,left=15mm,right=15mm,top=15mm,headheight=0mm,bottom=15mm]{geometry}
+
+%pgfplots
+\usepackage{pgfplots}
+\usepackage{pgfkeys}
+\pgfplotsset{compat=1.12}
+\usepackage{mathrsfs}
+
+%multi column text
+\usepackage{blindtext}
+\usepackage{multicol}
+
+%tikz (draw)
+\usepackage{tikz}
+\usepackage{pstricks-add}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc,angles,positioning}
+\usetikzlibrary{arrows}
+\usepackage{float}
+\usepackage{filecontents}
+
+%parskip settings
+\parindent=0ex
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+%fancy notation for sets
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\fancy}[1]{{\mathbb{#1}}}
+%sgn function
+\DeclareMathOperator{\sgn}{sgn}
+
+% intersection and union symbols
+\newcommand{\uni}{\cup}
+\newcommand{\inter}{\cap}
+\newcommand{\re}{\text{Re}}
+\newcommand{\const}{\text{const}}
+
+\renewcommand{\footrulewidth}{0.4pt}
+
+%\newcommand{\celsius}{$\ ^\circ C$}
+
+%environments
+
+\newtheorem{problem}{Задача}[]
+\newenvironment{definition}{\paragraph{Определение}}{}
+\renewcommand\thesection{\arabic{section}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0cm}{\baselineskip}{0pt}
+\titlespacing*{\subsection}
+{0pt}{0.1\baselineskip}{0.1\baselineskip}
+\titlespacing*{\paragraph}
+{0pt}{0.1\baselineskip}{\baselineskip}
+
+\setcounter{secnumdepth}{0}
+
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+\begin{document}
+	%\input{titlepage.tex}
+	%\newpage
+	%\pagenumbering{arabic}
+  %\pagestyle{fancy}
+
+  %\fancyhead{}
+  %\fancyfoot{}
+  %\fancyhead[L]{}
+  %\fancyhead[R]{\thepage}
+  %\fancyfoot[R]{Реферат к зачету в рамках Горизонтов физики}
+
+  \section{Что мы прошли в течение семестра?}
+
+  \subsection{Теоретическое введение}
+  \begin{compactitem}
+      \item Что такое стандартная модель?
+      \begin{compactitem}
+        \item Основные определения стандартной модели.
+        \item История развития стандартной модели.
+        \item Предсказывающая сила стандартной модели.
+        \item Что стандартная модель не описывает?
+        \begin{compactitem}
+          \item Темная материя, темная энергия, асимметрия материи-антиматерии и т.д.
+        \end{compactitem}
+        \item Возможные расширения стандартной модели.
+        \begin{compactitem}
+          \item Суперсимметрия, стерильные нейтрино и т.д.
+        \end{compactitem}
+        \item Какова связь эксперимента и теории?
+      \end{compactitem} 
+      \item Физика нейтрино.
+      \begin{compactitem}
+        \item Что такое нейтрино, как они были открыты и как они взаимодействуют с другими частицами?
+        \item Осцилляция нейтрино.
+        \item Поиск стерильного нейтрино.
+      \end{compactitem}
+      \item Экзотические частицы, тяжелые частицы, прелестные частицы.
+      \item Влияние теории на эксперимент.
+  \end{compactitem}
+  \subsection{Эксперименты}
+  \begin{compactitem}
+      \item Примеры действующих, и будущих экспериментов, их цель.
+      \begin{compactitem}
+        \item CMS@LHC, Belle, DANSS, NICA и др.
+      \end{compactitem}
+      \item Перспективы развития экспериментальной части физики элементарных частиц.
+      \begin{compactitem}
+        \item Модернизация нынешних экспериментов, планы будущих экспериментов.
+      \end{compactitem}
+      \item Более <<экзотические>> эксперименты (например, измерение ускорения свободного падения антиводорода).
+      \item Как выглядит процесс открытия новых частиц? Как выглядит научный процесс на старших курсах?
+      \item Как эксперимент влияет на развитие теории?
+  \end{compactitem}
+  \subsection{Что мне понравилось больше всего?}
+  Короткий ответ: \textbf{Физика космоса}. Одна лекция была посвящена введению в астрофизику (и физику космоса в целом).
+  \begin{compactitem}
+    \item Какова связь астрофизики и физики элементарных частиц?
+    \begin{compactitem}
+      \item Темная материя, темная энергия и т.д. --- общие проблемы как для астрофизики, так и для стандартной модели.
+    \end{compactitem}
+    \item Как астрофизика помогает развитию физики элементарных частиц?
+    \begin{compactitem}
+      \item Например, космические лучи (сверхбыстрые частицы) позволяют экспериментаторам обнаруживать достаточно тяжелые частицы без необходимости сложных коллайдеров. Так были открыты некоторые частицы стандартной модели.
+    \end{compactitem}
+    \item Как физика элементарных частиц помогает астрофизике?
+    \begin{compactitem}
+      \item Например, моделирование взрыва сверхновой невозможно без учета нейтрино, а их масса очень сильно влияет на результат моделирования.
+      \item Любое развитие стандартной модели может кардинально изменить существующее представление о большинстве космических феноменов.
+    \end{compactitem}
+  \end{compactitem}
+  
+  
+\end{document}
